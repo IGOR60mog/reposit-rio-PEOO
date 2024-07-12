@@ -26,3 +26,4 @@ x.set_raio(2)
 print(x.get_raio())
 print(x.calc_area())
 print(x.calc_circunferencia())
+x = x
