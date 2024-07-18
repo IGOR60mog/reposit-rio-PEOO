@@ -11,9 +11,42 @@ class Agua:
         
             if self.__mes < 0 or self.__ano > 12 or self.__ano < 2000 or self.__ano >= 2024:
                 raise ValueError("Mês e ano errado")
+        
+        def set_consumo(self, v):
+            if v > 0:
+                v = self.__consumo
+            else: raise ValueError("Mês e ano errado")
 
-        def get_tempo
-            return 
+        def valor(self):
+            valor = 38
+            if self.__consumo > 20:
+                valor += (self.__consumo - 20)*6
+            elif self.__consumo > 10 and self.consumo <= 20:
+                valor += (self.__consumo - 10) * 5
+            else:
+                raise ValueError()
+                return valor
+    
+        def get_tempo(self):
+            return f"{self.__mes}/{self.__ano}"
+        
         def get_consumo(self):
             return self.__consumo
         
+        def get_mes(self):
+            return self.__mes
+        
+        def get_ano(self):
+            return self.__ano
+
+
+
+
+class UI:
+    @staticmethod
+    def main():
+        x = Agua()
+
+
+
+UI.main()
