@@ -42,6 +42,42 @@ class Agua:
 
 
 
+class Ingresso:
+    def _init_(self):
+        self.__dia = '' #dia da semana
+        self.__horario = 0 #hora
+
+    def set_dia(self, v):
+        lista = ["segunda", "terça", "quarta", "quinta", "sexta", "sábado", "domingo"]
+        if v in lista:
+                self.__dia = v
+        else:
+            raise ValueError("Dia incorreto")
+        
+    def get_dia(self, v):
+        return self.__dia
+
+    def set_horario(self, v):
+        if v >= 0 and v < 24:
+            self.__horario = v
+        else:
+            raise ValueError("Dia incorreto")
+
+    def get_horario(self, v):
+        return self.__horario
+
+    def valor(self):
+        valor = 0
+        
+
+
+dia = input('dia: ').upper()
+horario = input('horario: ')
+entrada = Ingresso(dia, horario)
+
+print(entrada.valor())
+
+
 class UI:
     @staticmethod
     def main():
