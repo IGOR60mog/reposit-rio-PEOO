@@ -43,6 +43,8 @@ class Musica:
     def __str__(self):
         return f"{self.__titulo} - {self.__artista} - {self.__album}"
 
+
+
 class PlayList:
     def __init__(self, nome, descricao):
         if nome != "": self.__nome = nome
@@ -56,8 +58,17 @@ class PlayList:
     def listar(self):
         return self.__musicas[:]
     
+    def TempoTotal(self):
+
+        Listaduracao = []
+        for n in self.__musicas:
+            Listaduracao.append(n.get_duracao())
+        return sum(Listaduracao)
+
     def __str__(self):
-        return f"Playlist {self.__nome} - {self.__descricao} tem {len(self.__musicas)} música(s)"    
+        return f"Playlist {self.__nome} - {self.__descricao} tem {len(self.__musicas)} música(s)"
+
+    
 
 
 class UI:
@@ -75,7 +86,7 @@ class UI:
             if op == 2: UI.inserir_musica(p)
             if op == 3: UI.listar_musica(p)
             if op == 4: UI.info(p)
-
+    
     @staticmethod
     def nova_playlist():
         nome = input("Informe o nome da playlist: ")
