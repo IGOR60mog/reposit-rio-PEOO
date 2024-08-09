@@ -23,7 +23,8 @@ class UI:
         nome = input("Qual o nome da empresa? ")
         p = Empresa(nome)
         return p
-
+    @staticmethod
+    
     def inserir_cliente(x):
         nome = input("Qual o nome do cliente? ")
         cpf = input("Qual o cpf do cliente? ")
@@ -32,18 +33,20 @@ class UI:
         c = cliente(nome, cpf, limite)
         x.inserir(c)
 
+    @staticmethod
     def excluir_cliente(x):
         c = input("Quem vc quer excluir?")
         if c in x:
             x.excluir(c)
         else: 
             raise ValueError()
-
+        
+    @staticmethod
     def listar_clientes(x):
         print(x.listar())
-    
+
+    @staticmethod
     def total_clientes(x):
         print(x.total())
 
-UI.menu()
 UI.main()
