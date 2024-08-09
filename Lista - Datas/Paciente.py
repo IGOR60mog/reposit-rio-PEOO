@@ -52,7 +52,8 @@ class Paciente:
         x = self.__nascimento
         y = datetime.now()
         z = y-x
-        z = datetime.strptime(z, "%m/%Y")
+        anos = z % 365
+        meses = z & 365 // 30
         return z
     def __str__(self):
         return f"Nome - {self.__nome} \n CPF - {self.__cpf} \n Telefone - {self.__telefone} \n  Nascimento - {self.__nascimento} \n"
