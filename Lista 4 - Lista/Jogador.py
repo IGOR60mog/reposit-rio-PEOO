@@ -80,7 +80,7 @@ class UI:
             if op == 2: UI.InserirJg(p)
             if op == 3: UI.ListarJg(p)
             if op == 4: UI.MostrarArtilheiro(p)
-            if op == 5: UI.Info(p)
+            if op == 5: UI.info(p)
 
     @staticmethod
     def NovoTime():
