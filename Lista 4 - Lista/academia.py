@@ -22,7 +22,7 @@ class Academia:
         self.__endereço = e
         self.__esporte = []
         if n == "": raise ValueError("Nome não pode ser vazio")
-        if e =="": raise ValueError("Endereço não pode ser vazio")
+        if e == "": raise ValueError("Endereço não pode ser vazio")
 
     def Inserir(self, e):
         if e in self.__esporte:
@@ -46,7 +46,45 @@ class Academia:
 class UI:
     @staticmethod
     def menu():
-        print("1 - Criar Academia, 2 - Inserir esporte, 3 - Listar esportes, ")
-        
+        print("1 - Criar Academia, 2 - Inserir esporte, 3 - Listar esportes, 4 - Media Mensalidade, 5 - fim")
+        return int(input("Escolha uma opção: "))
+    
+    @staticmethod
+    def main():
+        op = 0
+        while op != 5:
+            op = UI.menu()
+            if op == 1: a = UI.criar_academia()
+            if op == 2: UI.inserir_esporte(a)
+            if op == 3: UI.listar_esportes(a)
+            if op == 4: UI.media(a)
+    
+    
+    @staticmethod
+    def criar_academia():
+        nome = input("Informe o nome da academia: ")
+        endereco = input("Informe o endereço da academia: ")
+        a = Academia(nome, endereco)
+        return a
+    
+    @staticmethod
+    def inserir_esporte(x):
+        nome = input("Informe nome do esporte: ")
+        horario = input("Informe horário do esporte: ")
+        mensalidade = int(input("Informe mensalidade do esporte: "))
+
+        e = Esporte(nome, horario, mensalidade)
+        x.Inserir(e)
+    
+    @staticmethod
+    def listar_esportes(x):
+        print(x.Listar())
+
+    @staticmethod
+    def media(x):
+        print(f"A Média da sua mensaldiade é de {x.media()}")
+
+UI.main()
+
 
 
