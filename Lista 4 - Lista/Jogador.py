@@ -73,8 +73,7 @@ class UI:
 
         op = 0
 
-        while op != 5:
-
+        while op != 6:
             op = UI.menu()
             if op == 1: p = UI.NovoTime()
             if op == 2: UI.InserirJg(p)
