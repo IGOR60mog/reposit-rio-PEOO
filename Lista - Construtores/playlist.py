@@ -8,7 +8,7 @@ class Musica:
         self.__titulo = ""
         self.__artista = ""
         self.__album = ""
-        self.__data = datetime()
+        self.__data = datetime(1, 1, 1)
         self.__duracao = timedelta()
 
     def set_titulo(self, titulo):
@@ -24,7 +24,7 @@ class Musica:
         else: raise ValueError()
     
     def set_duracao (self, duracao):
-        t1 = datetime.timedelta(seconds=0)
+        t1 = timedelta(seconds=0)
         if duracao != t1: self.__duracao = duracao
 
     def set_data (self, data):
@@ -41,7 +41,7 @@ class Musica:
     def get_duracao(self): return self.__duracao
 
     def __str__(self):
-        return f"{self.__titulo} - {self.__artista} - {self.__album}"
+        return f"{self.__titulo} - {self.__artista} - {self.__album} - {self.__duracao} - Data de inclusão {self.__data}"
 
 
 
@@ -60,13 +60,14 @@ class PlayList:
     
     def TempoTotal(self):
 
-        Listaduracao = []
+        Soma = timedelta()
         for n in self.__musicas:
-            Listaduracao.append(n.get_duracao())
-        return sum(Listaduracao)
+            Soma += n.get_duracao()
+        x = Soma
+        return x
 
     def __str__(self):
-        return f"Playlist {self.__nome} - {self.__descricao} tem {len(self.__musicas)} música(s)"
+        return f"Playlist {self.__nome} - {self.__descricao} - tem {len(self.__musicas)} música(s) - duração total {self.TempoTotal()} minutos."
 
     
 
@@ -102,7 +103,7 @@ class UI:
         x = input("Informe da duração da música: ")
         l = x.split(':')
         M = int(l[0])
-        S = int([1])
+        S = int(l[1])
         duracao = timedelta(minutes=M, seconds=S)
         data = datetime.now()
         m = Musica()

@@ -8,7 +8,6 @@ class bingo:
         self.__sorteados = []
 
     
-    def SetNumbolas():
         
     def iniciar(self, x):
         if x > 0 and x <= 100:
