@@ -36,8 +36,8 @@ class Time:
     def __init__ (self, n, c):
         if n == "": raise ValueError()
         if c == "": raise ValueError()
-        self.__nome = ''
-        self.__estado = ''
+        self.__nome = n
+        self.__estado = c
         self.__jogadores = []
 
     def Inserir(self, j):
@@ -49,18 +49,23 @@ class Time:
     def Listar(self):
         return self.__jogadores[:]
 
-    def Artilheiro(self, v):
-        return max(v)
+    def Artilheiro(self):
+        
+        maior = self.__jogadores[0]
+        for x in self.__jogadores:
+            if x.GetGols() > maior.GetGols():
+                maior = x
+        return maior
 
     def __str__(self):
-        return f"Nome - {self.__nome} Estado - {self.__estado} Gols - {self.__jogadores}"
+        return f"Nome - {self.__nome} Estado - {self.__estado}"
 
 
 class UI:
 
     @staticmethod
     def menu():
-        print(" 1 - Novo time <\n> 2 - Inserir Jogadores <\n> 3 - Listar Jogadores <\n> 4 - Mostrar Artilheiro <\n> 5 - Fim")
+        print(" 1 - Novo time, 2 - Inserir Jogadores, 3 - Listar Jogadores, 4 - Mostrar Artilheiro, 5 - Info, 6 - Fim")
         return int(input("Digite a opção escolhida: "))
     
     @staticmethod
@@ -75,6 +80,7 @@ class UI:
             if op == 2: UI.InserirJg(p)
             if op == 3: UI.ListarJg(p)
             if op == 4: UI.MostrarArtilheiro(p)
+            if op == 5: UI.Info(p)
 
     @staticmethod
     def NovoTime():
@@ -94,15 +100,15 @@ class UI:
 
     @staticmethod
     def ListarJg(x):
-        Lista = x.Listar()
-        print(Lista)
+        for l in x.Listar():
+            print(l)
 
     @staticmethod
     def MostrarArtilheiro(x):
+        print(x.Artilheiro())
 
-        Gols = []
-        for y in x.Listar():
-            Gols.append(y.GetGols)
-        print(x.Artilheiro(Gols))
+    @staticmethod
+    def info(x):
+        print(x)
 
 UI.main()

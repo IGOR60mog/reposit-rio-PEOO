@@ -12,6 +12,7 @@ class Esporte:
     def get_nome (self): return self.__nome
     def get_hoarios (self): return self.__horarios
     def get_mensalidade (self): return self.__mensalidade
+
     def __str__ (self):
         return f"Esporte - {self.__nome} - Horários - {self.__horarios} - Mensalidade - {self.__mensalidade} "
     
@@ -46,18 +47,19 @@ class Academia:
 class UI:
     @staticmethod
     def menu():
-        print("1 - Criar Academia, 2 - Inserir esporte, 3 - Listar esportes, 4 - Media Mensalidade, 5 - fim")
+        print("1 - Criar Academia, 2 - Inserir esporte, 3 - Listar esportes, 4 - Media Mensalidade, 5 - Info, 6 - fim")
         return int(input("Escolha uma opção: "))
     
     @staticmethod
     def main():
         op = 0
-        while op != 5:
+        while op != 6:
             op = UI.menu()
             if op == 1: a = UI.criar_academia()
             if op == 2: UI.inserir_esporte(a)
             if op == 3: UI.listar_esportes(a)
             if op == 4: UI.media(a)
+            if op == 5: UI.info(a)
     
     
     @staticmethod
@@ -78,11 +80,17 @@ class UI:
     
     @staticmethod
     def listar_esportes(x):
-        print(x.Listar())
+        for e in x.Listar():
+            print(e)
+
 
     @staticmethod
     def media(x):
-        print(f"A Média da sua mensaldiade é de {x.media()}")
+        print(f"A Média da sua mensaldiade é de {x.Mensalidade()}")
+
+    @staticmethod
+    def info(x):
+        print(x)
 
 UI.main()
 
