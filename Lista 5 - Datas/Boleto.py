@@ -10,27 +10,41 @@ class Pagamento(enum.Enum):
 
 class Boleto:
 
-    def __init__(self, b, e, v, p, vb, vp ):
-        self.__barras = b
-        self.__emissao = e
-        self.__vencimento = v
-        self.__Pagto = p
-        self.__valorBoleto = vb
-        self.__valorPago = vp
-        self.__situacao = 0
+    def __init__(self):
+        self.__barras = ""
+        self.__emissao = datetime(1, 1, 1)
+        self.__vencimento = datetime(1, 1, 1)
+        self.__Pagto = datetime(1, 1, 1)
+        self.__valorBoleto = 0.0
+        self.__valorPago = 0.0
+        self.__situacao = Pagamento.EmAberto
+
+        def SetBarras (self, v):
+            if v != "":
+                self.__barras = v
+            else:
+                raise ValueError()
         
-        if b == '': raise ValueError()
-        if e == datetime(1, 1, 1): raise ValueError()
-        if v == datetime(1, 1, 1): raise ValueError()
-        if p == datetime(1, 1, 1): raise ValueError()
-        if vb == 0.00: raise ValueError()
-        if vp == 0.00: raise ValueError()
+        def SetEmissao (self, e):
+            if e != datetime(1, 1, 1):
+                self.__emissao = e
+            else:
+                raise ValueError()
+    
+        def SetVencimento(self, v):
+            if v != datetime(1, 1, 1):
+                self.__vencimento = v
+            else:
+                raise ValueError()
 
-        def Pagar(self, vp):
-            if self.__valorBoleto == vp:
-                self.__situacao == 3
-            elif self.__valorBoleto > vp:
-                self.__situacao == 2
-            elif vp < 0:
-                self.__situacao == 1
+        def SetPagto (self, p):
+            if v != datetime(1, 1, 1):
+                self.__vencimento = p
+            else:
+                raise ValueError()    
+           
+        def SetValorBoleto(self. b):
+            
 
+        def ValorPago(self,p):
+        def situacao(self, s):
