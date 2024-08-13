@@ -43,7 +43,7 @@ class Boleto:
             else:
                 raise ValueError()    
            
-        def SetValorBoleto(self. b):
+        def SetValorBoleto (self. b):
             if b != 0.0:
                 self.__
 
