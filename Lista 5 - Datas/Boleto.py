@@ -38,13 +38,15 @@ class Boleto:
                 raise ValueError()
 
         def SetPagto (self, p):
-            if v != datetime(1, 1, 1):
-                self.__vencimento = p
+            if p != datetime(1, 1, 1):
+                self.__Pagto = p
             else:
                 raise ValueError()    
            
         def SetValorBoleto(self. b):
-            
+            if b != 0.0:
+                self.__
+
 
         def ValorPago(self,p):
         def situacao(self, s):
