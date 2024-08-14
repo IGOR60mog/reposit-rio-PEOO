@@ -80,13 +80,12 @@ class Boleto:
 
 class UI:
     @staticmethod
-    def main():
+    def menu():
         print(" 1 - Novo boleto; 2 - Informações do Boleto; 3 - Pagar; 4 - Situacao; 5 - fim")
         return int(input("Escolha uma opção: "))
     
     @staticmethod
-    def menu():
-        
+    def main():
         op = 0
         while op != 5:
             op = UI.main()
@@ -95,36 +94,36 @@ class UI:
             if op == 3: UI.Pagando(b)
             if op == 4: UI.SituacaoAtual(b)
 
-        @staticmethod
-        def NovoBoleto():
-            cod = input("Insira código do boleto: ")
-            Ems = input("Insira data de emissão dd/mm/aaaa: ")
-            Venc = datetime(input("Insira data de vencimento dd/mm/aaaa"))
-            Valor = float(input("Insira valor do boleto"))
+    @staticmethod
+    def NovoBoleto():
+        cod = input("Insira código do boleto: ")
+        Ems = input("Insira data de emissão dd/mm/aaaa: ")
+        Venc = datetime(input("Insira data de vencimento dd/mm/aaaa"))
+        Valor = float(input("Insira valor do boleto"))
 
-            b = Boleto()
-            b.SetBarras(cod)
-            b.SetEmissao(Ems)
-            b.SetVencimento(Venc)
-            b.SetValorBoleto(Valor)
-            return b
+        b = Boleto()
+        b.SetBarras(cod)
+        b.SetEmissao(Ems)
+        b.SetVencimento(Venc)
+        b.SetValorBoleto(Valor)
+        return b
 
-        @staticmethod
-        def Pagando(x):
-            ValorPago = float(input("Insira valor a pagar: "))
-            x.Pagar(ValorPago)
-            print("Pagamento concluído!")
+    @staticmethod
+    def Pagando(x):
+        ValorPago = float(input("Insira valor a pagar: "))
+        x.Pagar(ValorPago)
+        print("Pagamento concluído!")
 
-        @staticmethod
-        def SituacaoAtual(x):
-            Situ = x.situacao()
+    @staticmethod
+    def SituacaoAtual(x):
+        Situ = x.situacao()
 
-            if Situ.value == 1:
-                print("Pagando em aberto!")
-            if Situ.value == 2:
-                print("Pagamento parcialmente completo!")
-            else:
-                print("Pagamento completo!")
+        if Situ.value == 1:
+            print("Pagando em aberto!")
+        if Situ.value == 2:
+            print("Pagamento parcialmente completo!")
+        else:
+            print("Pagamento completo!")
 
 UI.main()
 
