@@ -126,6 +126,7 @@ class UI:
             else:
                 print("Pagamento completo!")
 
+UI.main()
 
 
 
