@@ -23,52 +23,52 @@ class Boleto:
         if v != "":
             self.__barras = v
         else:
-            raise ValueError()
+            raise ValueError("Cógido Inválido!")
         
     def SetEmissao (self, e):
         if e != datetime(1, 1, 1):
             self.__emissao = e
         else:
-            raise ValueError()
+            raise ValueError("Data Inválida!")
     
     def SetVencimento(self, v):
         if v != datetime(1, 1, 1):
             self.__vencimento = v
         else:
-            raise ValueError()
+            raise ValueError("Data Inválida!")
 
     def SetPagto (self, p):
         if p != datetime(1, 1, 1):
             self.__Pagto = p
         else:
-            raise ValueError()    
+            raise ValueError("Data Inválida!")    
            
     def SetValorBoleto (self, b):
         if b != 0.0:
             self.__valorBoleto = b
         else:
-            raise ValueError()
+            raise ValueError("Valor Inválido!")
 
 
     def SetValorPago(self,p):
         if p != 0.0:
             self.__valorPago = p
         else:
-            raise ValueError()
+            raise ValueError("Valor Inválido!")
             
         
         
     def Pagar(self, v):
         self.SetPagto(datetime.now())
-        if self.__vencimento < self.__pagto and self.__pagto > self.__emissao:
+        if self.__vencimento >= self.__Pagto and self.__Pagto > self.__emissao:
             self.SetValorPago(v)
         else:
-            raise ValueError()
+            raise ValueError("Data Inválida!")
         
     def situacao(self):
-        if self.__valorPago == self.valorBoleto:
+        if self.__valorPago == self.__valorBoleto:
             self.__situacao = Pagamento.Pago
-        elif self.__valorPago < self.valorBoleto and self.__valorPago > 0:
+        elif self.__valorPago < self.__valorBoleto and self.__valorPago > 0:
             self.__situacao = Pagamento.PagoParcial
         else:
             self.__situacao = Pagamento.EmAberto
@@ -88,7 +88,7 @@ class UI:
     def main():
         op = 0
         while op != 5:
-            op = UI.main()
+            op = UI.menu()
             if op == 1: b = UI.NovoBoleto()
             if op == 2: print(b)
             if op == 3: UI.Pagando(b)
@@ -97,9 +97,9 @@ class UI:
     @staticmethod
     def NovoBoleto():
         cod = input("Insira código do boleto: ")
-        Ems = input("Insira data de emissão dd/mm/aaaa: ")
-        Venc = datetime(input("Insira data de vencimento dd/mm/aaaa"))
-        Valor = float(input("Insira valor do boleto"))
+        Ems = datetime.strptime(input("Insira data de emissão dd/mm/aaaa: "), "%d/%m/%Y")
+        Venc = datetime.strptime(input("Insira data de vencimento dd/mm/aaaa: "), "%d/%m/%Y")
+        Valor = float(input("Insira valor do boleto: "))
 
         b = Boleto()
         b.SetBarras(cod)
