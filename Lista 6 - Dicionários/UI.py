@@ -7,7 +7,12 @@ import json
 class UI:
   @staticmethod
   def menu():
-    print("1 - Inserir cliente, 2 - Listar clientes, 3 - atualizar cliente, 4 - excluir cliente, 9 - Fim")
+    print("1 - Cliente, 2 - Horario, 3 - servico")
+
+    print("1 - Inserir cliente, 2 - Listar clientes, 3 - atualizar cliente, 4 - excluir cliente" "\n" 
+          "5 - Inserir Horario, 6 - Listar Horario, 7 - atualizar horario, 8 - excluir horario" "\n" 
+          "9 - Inserir Serviço, 10 - Listar Serviços, 11 - atualizar serviços, 12 - excluir serviços" "\n"   
+          "                                     9 - Fim")
     return int(input("Informe uma opção: "))
 
   @staticmethod
@@ -48,7 +53,7 @@ class UI:
   def cliente_excluir():
     UI.cliente_listar()
     id = int(input("Informe o id do cliente a ser excluído: "))
-    c = Cliente(id, "", "", "")
+    c = Cliente(id, "qual", "quer", "coisa")
     Clientes.excluir(c)
 
 UI.main()

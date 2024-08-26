@@ -12,7 +12,7 @@ class Clientes:
         cls.abrir()
         m = 0
         for c in cls.objetos:
-            if c.__id > m: m = c.__id
+            if c.get_id() > m: m = c.get_id()
             x = m + 1
             obj.set_id(x)
     else:
@@ -36,12 +36,13 @@ class Clientes:
   def atualizar(cls, obj):
     c = cls.listar_id(obj.get_id())
     if c != None:
-      c = Cliente(obj.get_id(), obj.get_nome(), obj.get_email(), obj.get_fone())
+      x = cls.objetos.index(c)
+      cls.objetos[x] = Cliente(obj.get_id(), obj.get_nome(), obj.get_email(), obj.get_fone())
       cls.salvar() #write
 
   @classmethod
   def excluir(cls, obj):
-    c = cls.listar_id(obj.__id)
+    c = cls.listar_id(obj.get_id())
     if c != None:
       cls.objetos.remove(c)
       cls.salvar()  #write
