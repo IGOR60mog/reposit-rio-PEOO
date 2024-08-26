@@ -15,7 +15,7 @@ class Clientes:
             if c.__id > m: m = c.__id
             obj.__id = m + 1
     else:
-      obj.__id = 1
+      obj.set_id(1)
     cls.objetos.append(obj)
     cls.salvar()  
 

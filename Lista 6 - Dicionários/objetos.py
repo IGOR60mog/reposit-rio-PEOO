@@ -12,6 +12,9 @@ class Cliente:
         if nome == "": raise ValueError()
         if email == "": raise ValueError()
         if fone == "": raise ValueError()
+    
+    def set_id(self, obj):
+        if obj != 0: self.__id = obj
 
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__email} - {self.__fone}"
