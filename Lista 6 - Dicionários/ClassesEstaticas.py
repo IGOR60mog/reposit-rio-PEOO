@@ -13,7 +13,8 @@ class Clientes:
         m = 0
         for c in cls.objetos:
             if c.__id > m: m = c.__id
-            obj.__id = m + 1
+            x = m + 1
+            obj.set_id(x)
     else:
       obj.set_id(1)
     cls.objetos.append(obj)
@@ -52,7 +53,7 @@ class Clientes:
     with open("clientes.json", mode="r") as arquivo:   # r - read
         texto = json.load(arquivo)
     for obj in texto:   
-        c = Cliente(obj["id"], obj["nome"], obj["email"], obj["fone"])
+        c = Cliente(obj["_Cliente__id"], obj["_Cliente__nome"], obj["_Cliente__email"], obj["_Cliente__fone"])
         cls.objetos.append(c)
 
   @classmethod 
