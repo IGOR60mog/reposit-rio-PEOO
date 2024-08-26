@@ -52,6 +52,7 @@ class Clientes:
   def abrir(cls):
     with open("clientes.json", mode="r") as arquivo:   # r - read
         texto = json.load(arquivo)
+        cls.objetos = []
     for obj in texto:   
         c = Cliente(obj["_Cliente__id"], obj["_Cliente__nome"], obj["_Cliente__email"], obj["_Cliente__fone"])
         cls.objetos.append(c)
