@@ -84,7 +84,7 @@ class Horarios:
     cls.abrir()   #read
     for c in cls.objetos:
       if c.id == id: return c
-    return None  
+    return None 
 
   @classmethod
   def atualizar(cls, obj):
@@ -112,7 +112,7 @@ class Horarios:
 
   @classmethod 
   def salvar(cls):
-    with open("clientes.json", mode="w") as arquivo:   # w - write
+    with open("horarios.json", mode="w") as arquivo:   # w - write
         json.dump(cls.objetos, arquivo, default = vars)
   
   objetos = []    # atributo estático

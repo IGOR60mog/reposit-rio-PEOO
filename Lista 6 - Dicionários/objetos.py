@@ -37,6 +37,11 @@ class Horario:
         if idCliente == 0: ValueError()
         if idServico == 0: ValueError()
 
+        def set_id(self, obj):  
+            if obj != 0: self.__id = obj
+        def get_id(self): return self.__id        
+        def get_data(self): return self.__data
+
     def __str__ (self):
         return f"{self.__id} - {self.__data}"
 
