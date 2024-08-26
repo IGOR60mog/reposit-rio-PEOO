@@ -26,8 +26,8 @@ class UI:
     nome = input("Informe o nome: ")
     email = input("Informe o e-mail: ")
     fone = input("Informe o fone: ")
-    c = Cliente(0, nome, email, fone)
-    Clientes.inserir(c)
+    x = Cliente(0, nome, email, fone)
+    Clientes.inserir(Clientes, x)
 
   @staticmethod
   def cliente_listar():  

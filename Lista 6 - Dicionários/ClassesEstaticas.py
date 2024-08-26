@@ -8,7 +8,8 @@ class Clientes:
   objetos = []    # atributo estático
 
   def inserir(cls, obj):
-    cls.abrir()
+    if cls.objetos != []:
+        cls.abrir()
     m = 0
     for c in cls.objetos:
       if c.__id > m: m = c.__id
