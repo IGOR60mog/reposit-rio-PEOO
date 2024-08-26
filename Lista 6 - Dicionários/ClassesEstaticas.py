@@ -29,16 +29,14 @@ class Clientes:
   def listar_id(cls, id):
     cls.abrir()   #read
     for c in cls.objetos:
-      if c.__id == id: return c
+      if c.get_id() == id: return c
     return None  
 
   @classmethod
   def atualizar(cls, obj):
-    c = cls.listar_id(obj.__id)
+    c = cls.listar_id(obj.get_id())
     if c != None:
-      c.nome = obj.__nome
-      c.email = obj.__email
-      c.fone = obj.__fone
+      c = Cliente(obj.get_id(), obj.get_nome(), obj.get_email(), obj.get_fone())
       cls.salvar() #write
 
   @classmethod
