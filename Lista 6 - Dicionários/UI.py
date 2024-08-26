@@ -12,18 +12,26 @@ class UI:
     print("1 - Inserir cliente, 2 - Listar clientes, 3 - atualizar cliente, 4 - excluir cliente" "\n" 
           "5 - Inserir Horario, 6 - Listar Horario, 7 - atualizar horario, 8 - excluir horario" "\n" 
           "9 - Inserir Serviço, 10 - Listar Serviços, 11 - atualizar serviços, 12 - excluir serviços" "\n"   
-          "                                     9 - Fim")
+          "                                     13 - Fim")
     return int(input("Informe uma opção: "))
 
   @staticmethod
   def main():
     op = 0
-    while op != 9:
+    while op != 13:
       op = UI.menu()
       if op == 1: UI.cliente_inserir()
       if op == 2: UI.cliente_listar()
       if op == 3: UI.cliente_atualizar()
       if op == 4: UI.cliente_excluir()
+      if op == 5: UI.horario_inserir()
+      if op == 6: UI.horario_listar()
+      if op == 7: UI.horario_atualizar()
+      if op == 8: UI.horario_excluir()
+      if op == 9: UI.servico_inserir()
+      if op == 10: UI.servico_listar()
+      if op == 11: UI.servico_atualizar()
+      if op == 12: UI.servico_excluir()
 
   @staticmethod
   def cliente_inserir():
