@@ -41,6 +41,9 @@ class Horario:
             if obj != 0: self.__id = obj
         def get_id(self): return self.__id        
         def get_data(self): return self.__data
+        def get_confirmado(self): return self.__confirmado
+        def get_idCliente(self): return self.__idCliente
+        def get_idServico(self): return self.__idServico
 
     def __str__ (self):
         return f"{self.__id} - {self.__data}"
@@ -53,6 +56,9 @@ class Servico:
         self.__valor = valor
         self.__duracao = duracao
 
+        def set_id(self, obj):  
+            if obj != 0: self.__id = obj
+        def get_id(self): return self.__id       
         if descricao == "": raise ValueError()
         if valor == 0: raise ValueError()
         if duracao == 0: raise ValueError()

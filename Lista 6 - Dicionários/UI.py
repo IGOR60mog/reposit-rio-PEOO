@@ -64,4 +64,29 @@ class UI:
     c = Cliente(id, "qual", "quer", "coisa")
     Clientes.excluir(c)
 
+
+#5
+  @staticmethod
+  def horario_inserir():
+    data = input("Informe a data dd/mm/aaa: ")
+    SN = input("Informe a confirmação S/N: ")
+    if SN == "S":
+      confirmado = True
+    else:
+      confirmado = False
+    x = Horario(0, data, confirmado, "", "")
+    Horarios.inserir(Horarios, x)
+
+#9
+  @staticmethod
+  def servico_inserir():
+    descricao = input("Informe a data dd/mm/aaa: ")
+    valor = int(input("Informe o valor: "))
+    duracao = int(input("Informe a duracao: "))
+    x = Servico(0, descricao, valor, duracao)
+    Servicos.inserir(Servicos, x)
 UI.main()
+
+
+
+
