@@ -10,10 +10,12 @@ class Clientes:
   def inserir(cls, obj):
     if cls.objetos != []:
         cls.abrir()
-    m = 0
-    for c in cls.objetos:
-      if c.__id > m: m = c.__id
-    obj.__id = m + 1
+        m = 0
+        for c in cls.objetos:
+            if c.__id > m: m = c.__id
+            obj.__id = m + 1
+    else:
+      obj.__id = 1
     cls.objetos.append(obj)
     cls.salvar()  
 
