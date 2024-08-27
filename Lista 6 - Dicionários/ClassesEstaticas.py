@@ -124,6 +124,7 @@ class Servicos:
   
   objetos = []    # atributo estático
 
+  @classmethod
   def inserir(cls, obj):
     if cls.objetos != []:
         cls.abrir()
@@ -136,3 +137,44 @@ class Servicos:
       obj.set_id(1)
     cls.objetos.append(obj)
     cls.salvar()  
+
+  @classmethod
+  def listar(cls):
+    cls.abrir()
+    return cls.objetos
+
+  @classmethod
+  def listar_id(cls, id):
+    cls.abrir()   #read
+    for c in cls.objetos:
+      if c.get_id() == id: return c
+    return None  
+
+  @classmethod
+  def atualizar(cls, obj):
+    c = cls.listar_id(obj.get_id())
+    if c != None:
+      x = cls.objetos.index(c)
+      cls.objetos[x] = Servico(obj.get_id(), obj.get_descricao(), obj.get_valor(), obj.get_duracao())
+      cls.salvar() #write
+
+  @classmethod
+  def excluir(cls, obj):
+    c = cls.listar_id(obj.get_id())
+    if c != None:
+      cls.objetos.remove(c)
+      cls.salvar()  #write
+  
+  @classmethod 
+  def abrir(cls):
+    with open("servicos.json", mode="r") as arquivo:   # r - read
+        texto = json.load(arquivo)
+        cls.objetos = []
+    for obj in texto:   
+        c = Servico(obj["_Cliente__id"], obj["_Cliente__nome"], obj["_Cliente__email"], obj["_Cliente__fone"])
+        cls.objetos.append(c)
+
+  @classmethod 
+  def salvar(cls):
+    with open("servicos.json", mode="w") as arquivo:   # w - write
+        json.dump(cls.objetos, arquivo, default = vars)

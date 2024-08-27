@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from objetos import Cliente, Horario, Servico
-from ClassesEstaticas import Clientes, Horarios
+from ClassesEstaticas import Clientes, Horarios, Servicos
 import json
 
 
@@ -80,11 +80,36 @@ class UI:
 #9
   @staticmethod
   def servico_inserir():
-    descricao = input("Informe a data dd/mm/aaa: ")
-    valor = int(input("Informe o valor: "))
-    duracao = int(input("Informe a duracao: "))
+    descricao = input("Informe a descrição do serviço: ")
+    valor = input("Informe o valor do serviços: ")
+    duracao = input("Informe a duração do serviço: ")
     x = Servico(0, descricao, valor, duracao)
     Servicos.inserir(Servicos, x)
+
+ #10 
+  @staticmethod
+  def cliente_listar():  
+    for c in Servicos.listar():
+      print(c)
+
+#11
+  @staticmethod
+  def cliente_atualizar():
+    UI.cliente_listar()
+    id = int(input("Informe o id do cliente a ser atualizado: "))
+    descricao = input("Informe a descrição do serviço: ")
+    valor = input("Informe o valor do serviço: ")
+    duracao = input("Informe a duração do serviço: ")
+    c = Servico(id, descricao, valor, duracao)
+    Servicos.atualizar(c)
+
+#12
+  @staticmethod
+  def cliente_excluir():
+    UI.cliente_listar()
+    id = int(input("Informe o id do cliente a ser excluído: "))
+    c = Servico(id, "qual", "quer", "coisa")
+    Servicos.excluir(c)
 UI.main()
 
 
