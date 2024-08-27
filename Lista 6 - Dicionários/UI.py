@@ -81,10 +81,10 @@ class UI:
   @staticmethod
   def servico_inserir():
     descricao = input("Informe a descrição do serviço: ")
-    valor = input("Informe o valor do serviços: ")
-    duracao = input("Informe a duração do serviço: ")
-    x = Servico(0, descricao, valor, duracao)
-    Servicos.inserir(x)
+    valor = int(input("Informe o valor do serviço em reais: "))
+    duracao = int(input("Informe a duração do serviço em horas: "))
+    s = Servico(0, descricao, valor, duracao)
+    Servicos.inserir(s)
 
  #10 
   @staticmethod
