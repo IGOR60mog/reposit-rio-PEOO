@@ -94,18 +94,18 @@ class UI:
 
 #11
   @staticmethod
-  def serviço_atualizar():
-    UI.serviço_listar()
+  def servico_atualizar():
+    UI.servico_listar()
     id = int(input("Informe o id do serviço a ser atualizado: "))
     descricao = input("Informe a descrição do serviço: ")
-    valor = input("Informe o valor do serviço: ")
-    duracao = input("Informe a duração do serviço: ")
+    valor = int(input("Informe o valor do serviço: "))
+    duracao = int(input("Informe a duração do serviço: "))
     c = Servico(id, descricao, valor, duracao)
     Servicos.atualizar(c)
 
 #12
   @staticmethod
-  def serviço_excluir():
+  def servico_excluir():
     UI.serviço_listar()
     id = int(input("Informe o id do serviço a ser excluído: "))
     c = Servico(id, "qual", "quer", "coisa")

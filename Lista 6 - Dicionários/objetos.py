@@ -65,6 +65,9 @@ class Servico:
             self.__id = obj
     def get_id(self): 
         return self.__id 
+    def get_descricao(self): return self.__descricao
+    def get_valor(self): return self.__valor
+    def get_duracao(self): return self.__duracao
 
 
     def __str__(self):

@@ -171,7 +171,7 @@ class Servicos:
         texto = json.load(arquivo)
         cls.objetos = []
     for obj in texto:   
-        c = Servico(obj["_Cliente__id"], obj["_Cliente__nome"], obj["_Cliente__email"], obj["_Cliente__fone"])
+        c = Servico(obj["_Servico__id"], obj["_Servico__descricao"], obj["_Servico__valor"], obj["_Servico__duracao"])
         cls.objetos.append(c)
 
   @classmethod 
