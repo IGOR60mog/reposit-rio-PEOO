@@ -57,8 +57,11 @@ class Servico:
         self.__duracao = duracao
 
         def set_id(self, obj):  
-            if obj != 0: self.__id = obj
-        def get_id(self): return self.__id       
+            if obj != 0: 
+                self.__id = obj
+        def get_id(self): 
+            return self.__id 
+
         if descricao == "": raise ValueError()
         if valor == 0: raise ValueError()
         if duracao == 0: raise ValueError()
