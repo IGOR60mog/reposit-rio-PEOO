@@ -84,19 +84,19 @@ class UI:
     valor = input("Informe o valor do serviços: ")
     duracao = input("Informe a duração do serviço: ")
     x = Servico(0, descricao, valor, duracao)
-    Servicos.inserir(Servicos, x)
+    Servicos.inserir(x)
 
  #10 
   @staticmethod
-  def cliente_listar():  
+  def servico_listar():  
     for c in Servicos.listar():
       print(c)
 
 #11
   @staticmethod
-  def cliente_atualizar():
-    UI.cliente_listar()
-    id = int(input("Informe o id do cliente a ser atualizado: "))
+  def serviço_atualizar():
+    UI.serviço_listar()
+    id = int(input("Informe o id do serviço a ser atualizado: "))
     descricao = input("Informe a descrição do serviço: ")
     valor = input("Informe o valor do serviço: ")
     duracao = input("Informe a duração do serviço: ")
@@ -105,9 +105,9 @@ class UI:
 
 #12
   @staticmethod
-  def cliente_excluir():
-    UI.cliente_listar()
-    id = int(input("Informe o id do cliente a ser excluído: "))
+  def serviço_excluir():
+    UI.serviço_listar()
+    id = int(input("Informe o id do serviço a ser excluído: "))
     c = Servico(id, "qual", "quer", "coisa")
     Servicos.excluir(c)
 UI.main()
