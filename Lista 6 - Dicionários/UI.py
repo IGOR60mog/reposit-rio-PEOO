@@ -104,7 +104,7 @@ class UI:
   @staticmethod
   def horario_inserir():
     print("Horário só pode ser inserido após a adição de um cliente e um serviço")
-    data = datetime.strptime(input("Informe a data dd/mm/aaa: ", "%d/%m/%Y"))
+    data = datetime.strptime(input("Informe a data dd/mm/aaa: "), "%d/%m/%Y")
     SN = input("Informe a confirmação S/N: ")
     if SN == "S":
       confirmado = True
