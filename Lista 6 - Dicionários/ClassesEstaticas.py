@@ -77,9 +77,10 @@ class Horarios:
       obj.set_id(1)
 
     if Clientes.objetos[m] and Servicos.objetos[m]:
-      obj.__idCliente = m
-      obj.__idServico = m
+      obj.set_idCliente(m)
+      obj.set_idServico(m)
     else: raise ValueError("Cliente e/ou serviço não registrados!")
+    cls.objetos.append(obj)
     cls.salvar()
 
   @classmethod

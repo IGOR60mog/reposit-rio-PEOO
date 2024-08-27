@@ -51,7 +51,7 @@ class Horario:
         def get_idServico(self): return self.__idServico
 
     def __str__ (self):
-        return f"{self.__id} - {self.__data}"
+        return f"{self.__id} - Data: {self.__data} - Confirmado: {self.__confirmado}"
 
 class Servico:
 
