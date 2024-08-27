@@ -42,7 +42,12 @@ class Horario:
         def get_id(self): return self.__id        
         def get_data(self): return self.__data
         def get_confirmado(self): return self.__confirmado
+        def set_idCliente(self, id): 
+            if id != 0: self.__idCliente = id
         def get_idCliente(self): return self.__idCliente
+
+        def set_idCliente(self, id): 
+            if id != 0: self.__idCliente = id
         def get_idServico(self): return self.__idServico
 
     def __str__ (self):
@@ -71,4 +76,4 @@ class Servico:
 
 
     def __str__(self):
-       return f"{self.__id} - {self.__descricao} - {self.__valor} - {self.__duracao}"
+       return f"{self.__id} - {self.__descricao} - {self.__valor} reais - {self.__duracao} minutos"

@@ -78,7 +78,8 @@ class Horarios:
 
     if Clientes.objetos[m] and Servicos.objetos[m]:
       obj.__idCliente = m
-    else: raise ValueError("Insira o serviço e o cliente")
+      obj.__idServico = m
+    else: raise ValueError("Cliente e/ou serviço não registrados!")
     cls.salvar()
 
   @classmethod
