@@ -156,6 +156,83 @@ class cursos:
         with open("cursos.json", mode="w") as arquivo: 
             json.dump(cls.cursos, arquivo, default = vars)
     
+class professor:
+
+    def __init__ (self, id, idD, n, m, g, t):
+        self.id = id
+        self.idDiretoria = idD
+        self.nome = n
+        self.matricula = m
+        self.graduacao = g
+        self.telefone = t
+
+        if n == "": raise ValueError()
+        if m == 0: raise ValueError()
+        if g == "": raise ValueError()
+        if t == "": raise ValueError()
+
+    def __str__ (self):
+        return f"{self.id} - {self.nome} - {self.matricula} - {self.graduacao}"
+
+class professores:
+
+    professores = []
+
+    @classmethod
+    def inserir (cls, obj):
+        if cls.professores != []:
+            cls.abrir()
+            m = 0
+            for c in cls.professores:
+                if c.id > m: m = c.id
+                x = m + 1
+                obj.id = x
+        else:
+            obj.id = 1
+        cls.professores.append(obj)
+        cls.salvar()
+
+    @classmethod
+    def listar_id (cls, id):
+        cls.abrir()   
+        for c in cls.professores:
+            if c.id == id: 
+                return c
+        return None  
+
+    @classmethod
+    def listar (cls):
+        cls.abrir()
+        return cls.professores
+
+    @classmethod
+    def atualizar (cls, obj):
+        c = cls.listar_id(obj.id)
+        if c != None:
+            x = cls.professores.index(c)
+            cls.professores[x] = professor(obj.id, obj.idDiretoria, obj.nome, obj.matricula, obj.graduacao, obj.telefone)
+            cls.salvar()
+
+    @classmethod
+    def excluir (cls, obj):
+        c = cls.listar_id(obj.id)
+        if c != None:
+            cls.professores.remove(c)
+            cls.salvar()  
+
+    @classmethod 
+    def abrir(cls):
+        with open("professores.json", mode="r") as arquivo:   
+            texto = json.load(arquivo)
+            cls.professores = []
+        for obj in texto:   
+            p = professor(obj["id"], obj["idDiretoria"], obj["nome"], obj["matricula"], obj["graduacao"], obj["telefone"])
+            cls.professores.append(p)
+
+    @classmethod 
+    def salvar(cls):
+        with open("professores.json", mode="w") as arquivo: 
+            json.dump(cls.professores, arquivo, default = vars)
 
 class View:
 
@@ -199,6 +276,27 @@ class View:
         c = curso(id, "idD", "n", "d", "m", "c")
         cursos.excluir(c)
 
+    #Professor
+
+    @staticmethod
+    def inserir_professor(idD, nome, matricula, graduacao, telefone):
+        x = professor(0, idD, nome, matricula, graduacao, telefone)
+        professores.inserir(x)
+
+    @staticmethod
+    def listar_professor():
+        return professores.listar()
+
+    @staticmethod
+    def atualizar_professor(id, idD, nome, matricula, graduacao, telefone):
+        x = professor(id, idD, nome, matricula, graduacao, telefone)
+        professores.atualizar(x)
+
+    @staticmethod
+    def excluir_professor(id):
+        p = professor(id, "idD","n", "m", "g", "t")
+        professores.excluir(p)
+
 class UI:
     @staticmethod
     def menu():
@@ -206,9 +304,9 @@ class UI:
         " 1 - Inserir, 2 - Listar, 3 - Atualizar, 4 - Excluir" "\n"
         " Curso" "\n"
         " 5 - Inserir, 6 - Listar, 7 - Atualizar, 8 - Excluir" "\n"
-        # " Professor" "\n"
-        # " 9 - Inserir, 10 - Listar, 11 - Atualizar, 12 - Excluir" "\n"
-        "9 - Fim")
+        " Professor" "\n"
+        " 9 - Inserir, 10 - Listar, 11 - Atualizar, 12 - Excluir" "\n"
+        "13 - Fim")
         return int(input("Informe uma opção: "))
 
     @staticmethod
@@ -216,7 +314,7 @@ class UI:
 
         op = 0
         
-        while op != 9:
+        while op != 13:
             op = UI.menu()
 
             if op == 1: UI.inserir_diretoria()
@@ -227,6 +325,10 @@ class UI:
             if op == 6: UI.listar_curso()
             if op == 7: UI.atualizar_curso()
             if op == 8: UI.excluir_curso()
+            if op == 9: UI.inserir_professor()
+            if op == 10: UI.listar_professor()
+            if op == 11: UI.atualizar_professor()
+            if op == 12: UI.excluir_professor()
 
     def inserir_diretoria():
         nome = input("Insira nome da diretoria: ")
@@ -293,6 +395,38 @@ class UI:
         id = int(input("Informe o id do curso a ser excluído: "))
         View.excluir_curso(id)
     
+    #Professores
+
+
+    def inserir_professor():
+        nome = input("Insira o nome do professor: ")
+        matricula = int(input("Insira a matrícula do professor: "))
+        graduacao = input("Insira a graduação do professor: ")
+        telefone = input("Insira o número do professor: ")
+        UI.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o professor pertence: "))
+        View.inserir_professor(idD, nome, matricula, graduacao, telefone)
+
+    def listar_professor():
+        for x in View.listar_professor():
+            print(x)
+
+    def atualizar_professor():
+        UI.listar_professor()
+        id = int(input("Informe o id do professor a ser atualizado: "))
+        nome = input("Insira o nome do professor: ")
+        matricula = int(input("Insira a matrícula do professor: "))
+        graduacao = input("Insira a graduação do professor: ")
+        telefone = input("Insira o número do professor: ")
+        UI.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o professor pertence: "))
+        View.atualizar_professor(id, idD, nome, matricula, graduacao, telefone)
+
+    def excluir_professor():
+        UI.listar_professor()
+        id = int(input("Informe o id do professor a ser excluído: "))
+        View.excluir_professor(id)
+
 UI.main()
 
 
