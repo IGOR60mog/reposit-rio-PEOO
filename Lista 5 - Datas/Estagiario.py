@@ -61,7 +61,6 @@ class UI:
             if op == 2: UI.dias(e)
             if op == 3: UI.turnos(e)
             if op == 4: UI.infos(e)
-
     @staticmethod
     def Inscricao():
         nome = input("Insira seu nome: ")
@@ -70,7 +69,6 @@ class UI:
 
         e = Estagiario(nome, cpf, tel)
         return e
-    
     @staticmethod
     def dias(x):
         Dias = input("Insira os dias desejados: ")
