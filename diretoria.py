@@ -51,8 +51,7 @@ class diretorias:
     def atualizar (cls, obj):
         c = cls.listar_id(obj.id)
         if c != None:
-            x = cls.diretorias.index(c)
-            cls.diretorias[x] = diretoria(obj.id, obj.nome, obj.finalidade, obj.telefone, obj.email)
+            c = diretoria(obj.id, obj.nome, obj.finalidade, obj.telefone, obj.email)
             cls.salvar() 
 
     @classmethod
