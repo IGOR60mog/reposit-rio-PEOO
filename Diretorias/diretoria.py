@@ -52,6 +52,7 @@ class diretorias:
         c = cls.listar_id(obj.id)
         if c != None:
             c = diretoria(obj.id, obj.nome, obj.finalidade, obj.telefone, obj.email)
+            print(cls.diretorias)
             cls.salvar() 
 
     @classmethod
