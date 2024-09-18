@@ -39,7 +39,8 @@ class diretorias:
     def listar_id (cls, id):
         cls.abrir()   
         for c in cls.diretorias:
-            if c.id == id: return c
+            if c.id == id: 
+                return c
         return None  
 
     @classmethod
@@ -51,6 +52,7 @@ class diretorias:
     def atualizar (cls, obj):
         c = cls.listar_id(obj.id)
         if c != None:
+            x = cls.diretorias.index(c)
             c = diretoria(obj.id, obj.nome, obj.finalidade, obj.telefone, obj.email)
             print(cls.diretorias)
             cls.salvar() 
