@@ -1,15 +1,15 @@
 from view import View
-from diretoria import diretorias
+
 
 class UI:
     @staticmethod
     def menu():
         print(" Diretoria" "\n"
         " 1 - Inserir, 2 - Listar, 3 - Atualizar, 4 - Excluir" "\n"
-        # " Curso" "\n"
-        # " 5 - Inserir, 6 - Listar, 7 - Atualizar, 8 - Excluir" "\n"
-        # " Professor" "\n"
-        # " 9 - Inserir, 10 - Listar, 11 - Atualizar, 12 - Excluir" "\n"
+        " Curso" "\n"
+        " 5 - Inserir, 6 - Listar, 7 - Atualizar, 8 - Excluir" "\n"
+        " Professor" "\n"
+        " 9 - Inserir, 10 - Listar, 11 - Atualizar, 12 - Excluir" "\n"
         "13 - Fim")
         return int(input("Informe uma opção: "))
 

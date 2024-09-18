@@ -41,7 +41,7 @@ class professores:
         cls.abrir()   
         for c in cls.professores:
             if c.id == id: return c
-            return None  
+        return None  
 
     @classmethod
     def listar (cls):

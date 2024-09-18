@@ -39,8 +39,9 @@ class diretorias:
     def listar_id (cls, id):
         cls.abrir()
         for c in cls.diretorias:
-            if c.id == id: return c
-            return None  
+            if c.id == id: 
+                return c
+        return None  
 
     @classmethod
     def listar (cls):
@@ -54,7 +55,8 @@ class diretorias:
             x = cls.diretorias.index(c)
             cls.diretorias[x] = diretoria(obj.id, obj.nome, obj.finalidade, obj.telefone, obj.email)
             cls.salvar() 
-
+        else:
+            raise ValueError("Id não identificado")
     @classmethod
     def excluir (cls, obj):
         c = cls.listar_id(obj.id)

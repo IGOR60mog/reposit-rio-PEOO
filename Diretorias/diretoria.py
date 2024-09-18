@@ -40,7 +40,7 @@ class diretorias:
         cls.abrir()   
         for c in cls.diretorias:
             if c.id == id: return c
-            return None  
+        return None  
 
     @classmethod
     def listar (cls):

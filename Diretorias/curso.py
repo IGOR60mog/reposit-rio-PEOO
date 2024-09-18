@@ -42,7 +42,7 @@ class cursos:
         cls.abrir()   
         for c in cls.cursos:
             if c.id == id: return c
-            return None  
+        return None  
 
     @classmethod
     def listar (cls):
