@@ -31,8 +31,7 @@ class View:
 
     @staticmethod
     def listar_curso():
-        for c in cursos.listar():
-            print(c)
+        return cursos.listar()
 
     @staticmethod
     def atualizar_curso(id, idD, nome, descricao, modalidade, ch):

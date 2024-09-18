@@ -1,6 +1,5 @@
 from view import View
 
-
 class UI:
     @staticmethod
     def menu():
@@ -57,5 +56,69 @@ class UI:
         View.listar_diretoria
         id = int(input("Informe o id da diretoria a ser excluído: "))
         View.excluir_diretoria(id)
+
+    def inserir_curso():
+        nome = input("Insira o nome do curso: ")
+        descricao = input("Insira a descrição do curso: ")
+        presencial = input("O curso é presencial (S/N)? ")
+        if presencial == "S":
+            modalidade = True
+        else:
+            modalidade = False
+        ch = int(input("Insira a carga horária do curso em horas: "))
+        View.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o curso pertence: "))
+        View.inserir_curso(idD, nome, descricao, modalidade, ch)
+
+    def listar_curso():
+        View.listar_curso()
+
+    def atualizar_curso():
+        View.listar_curso()
+        id = int(input("Informe o id do curso a ser atualizado: "))
+        nome = input("Insira o nome do curso: ")
+        descricao = input("Insira a descrição do curso: ")
+        presencial = input("O curso é presencial (S/N)? ")
+        if presencial == "S":
+            modalidade = True
+        else:
+            modalidade = False
+        ch = int(input("Insira a carga horária do curso em horas: "))
+        View.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o curso pertence: "))
+        View.atualizar_curso(id, idD, nome, descricao, modalidade, ch)
+
+    def excluir_curso():
+        View.listar_curso()
+        id = int(input("Informe o id do curso a ser excluído: "))
+        View.excluir_curso(id)
+
+    def inserir_professor():
+        nome = input("Insira o nome do professor: ")
+        matricula = input("Insira a matrícula do professor: ")
+        graduacao = input("Insira a graduação do professor: ")
+        telefone = input("Insira o número do professor: ")
+        View.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o professor pertence: "))
+        View.inserir_professor(idD, nome, matricula, graduacao, telefone)
+
+    def listar_professor():
+        View.listar_professor()
+
+    def atualizar_professor():
+        View.listar_professor()
+        id = int(input("Informe o id do professor a ser atualizado: "))
+        nome = input("Insira o nome do professor: ")
+        matricula = input("Insira a matrícula do professor: ")
+        graduacao = input("Insira a graduação do professor: ")
+        telefone = input("Insira o número do professor: ")
+        View.listar_diretoria()
+        idD = int(input("Insira o id da diretoria que o professor pertence: "))
+        View.atualizar_professor(id, idD, nome, matricula, graduacao, telefone)
+
+    def excluir_professor():
+        View.listar_professor()
+        id = int(input("Informe o id do professor a ser excluído: "))
+        View.excluir_professor(id)
 
 UI.main()
