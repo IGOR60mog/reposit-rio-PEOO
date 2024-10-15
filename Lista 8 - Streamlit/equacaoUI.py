@@ -1,5 +1,10 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
+import math
+
 from equacao import *
+
 
 class EquacaoUI:
 
@@ -14,8 +19,25 @@ class EquacaoUI:
             st.write(e)
             st.write(f"Delta = {e.delta()}")
             st.write(f"x1 = {e.Raiz1()}")
-            st.write(f"x2 = {e.Raiz2()}")
+            st.write(f"x2 = {e.Raiz2()}")            
 
-            st.plotly_chart(figure_or_data=e, use_container_width=False, theme="streamlit", key=None, on_select="ignore", selection_mode=('points', 'box', 'lasso'), **kwargs)
-            
-            
+            xmin = ((int(b)/(2*int(a)))-30)
+            xmax = ((int(b)/(2*int(a)))+30)
+            n = 100
+            d = (xmax - xmin)/n  # 0.5
+            px = []
+            py = []
+            x = xmin
+            while x < xmax:
+                y = int(a)*x**2 - int(b)*x + int(b)
+                px.append(x)
+                py.append(y)
+                x = x + d
+            x = xmax
+            y = int(a)*x**2 - int(b)*x + int(b)
+            px.append(x)
+            py.append(y)
+
+            dic = { "x" : px, "y" : py }
+            chart_data = pd.DataFrame(dic)
+            st.line_chart(chart_data, x = "x", y = "y") 

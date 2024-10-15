@@ -1,5 +1,3 @@
-import math
-
 class Equacao:
     def __init__ (self, a, b, c):
         self.__a = a
@@ -15,9 +13,12 @@ class Equacao:
         else:
             return False
     def Raiz1 (self):
-        return (-self._b + math.sqrt(self.delta))/2*self.__a
+        raiz = (-self.__b + self.delta()**0.5)/(2*self.__a)
+        return raiz
+    
     def Raiz2 (self):
-        return (-self._b - math.sqrt(self.delta))/2*self.__a
+        raiz = (-self.__b - self.delta()**0.5)/(2*self.__a)
+        return raiz
     
     def __str__(self):
         return f"y = {self.__a}x² + {self.__b}x + {self.__c}"
