@@ -3,8 +3,6 @@ import streamlit as st
 import pandas as pd
 import time
 from datetime import datetime
-from AbrirAgendaUI import *
-
 
 class ManterHorariosUI:
     @staticmethod
@@ -24,11 +22,12 @@ class ManterHorariosUI:
     
     @staticmethod
     def inserir():
-        data =  datetime.strptime(st.text_input("Informe data (em dd/mm/aaaa): "), "%d/%m/%Y %H:%M")
+        d =  st.text_input("Informe data (em dd/mm/aaaa hh:mm): ")
         confirmacao = False
         idCliente = st.selectbox("Seleção de Cliente", View.cliente_listar(), key=1)
         idServico = st.selectbox("Seleção de Servico", View.servico_listar(), key=2)
         if st.button("Informe"):
+            data = datetime.strptime(d, "%d/%m/%Y %H:%M")
             View.horario_inserir(data, confirmacao, idCliente.get_id(), idServico.get_id())
             st.write("Horarios inserido com sucesso!")
             time.sleep(2)
@@ -39,9 +38,23 @@ class ManterHorariosUI:
         lista = []
         if View.horario_listar() != []:
             for x in View.horario_listar():
-                list = [x.get_id(), x.get_data(), x.get_confirmacao(), x.get_id_Cliente(), x.get_id_Servico()]
+                indice_cliente = x.get_id_Cliente()
+                indice_servico = x.get_id_Servico()
+                cliente = ""
+                descricao = ""
+                for x in View.cliente_listar():
+                    if x.get_id == indice_cliente:
+                        cliente = x.get_nome()
+                        break
+
+                for x in View.servico_listar_listar():
+                    if x.get_id == indice_servico:
+                        descricao = x.get_descricao()
+                        break
+
+                list = [x.get_id(), x.get_data(), x.get_confirmacao(), cliente, descricao]
                 lista.append(list)
-            th = ["Id", "data", "confirmacao", "idCliente", "idServiço"]    
+            th = ["Id", "data", "confirmacao", "Cliente", "Serviço"]    
             data = pd.DataFrame(lista, columns=th)
             st.dataframe(data, 1000, hide_index=True)
         else:
@@ -51,7 +64,6 @@ class ManterHorariosUI:
     def atualizar():
         horario = st.selectbox("Atualização de Horarios", View.horario_listar(), key=0)
         data = st.text_input("Informe novo data: ")
-        horarios = st.selectbox("Horários disponíveis", )
         confirmacao = False
         idCliente = st.selectbox("Seleção de Cliente", View.cliente_listar(), key=3)
         idServico = st.selectbox("Seleção de Servico", View.servico_listar(), key=4)

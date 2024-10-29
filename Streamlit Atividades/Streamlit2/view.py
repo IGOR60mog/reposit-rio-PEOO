@@ -12,8 +12,12 @@ class View:
    
    @staticmethod
    def cliente_inserir(nome, email, fone):
-      x = Cliente(0, nome, email, fone)
-      Clientes.inserir(Clientes, x)
+      c = Cliente(0, nome, email, fone)
+      for x in Clientes.listar():
+          if x.get_email() == c.get_email():
+              raise ValueError("Mesmo Email")
+          else:
+            Clientes.inserir(Clientes, x)
       
    
    @staticmethod
