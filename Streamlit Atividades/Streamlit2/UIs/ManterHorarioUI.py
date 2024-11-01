@@ -28,8 +28,8 @@ class ManterHorariosUI:
         Servico = st.selectbox("Seleção de Servico", View.servico_listar(), key=2)
         if st.button("Informe"):
             data = datetime.strptime(d, "%d/%m/%Y %H:%M")
-            View.horario_inserir(data, confirmacao, Cliente.get_nome(), Servico.get_descricao())
-            st.write("Horarios inserido com sucesso!")
+            View.horario_inserir(data, confirmacao, Cliente.get_id(), Servico.get_id())
+            st.write("Horários inserido com sucesso!")
             time.sleep(2)
             st.rerun()
     
@@ -38,7 +38,11 @@ class ManterHorariosUI:
         lista = []
         if View.horario_listar() != []:
             for x in View.horario_listar():
-                list = [x.get_id(), x.get_data(), x.get_confirmacao(), x.get_cliente(), x.get_servico()]
+                Cliente = View.cliente_listar_id(x.get_id_Cliente())
+                Servico = View.servico_listar_id(x.get_id_Servico())
+                if Cliente != None: Cliente = Cliente.get_nome()
+                if Servico != None: Servico = Servico.get_descricao()
+                list = [x.get_id(), x.get_data(), x.get_confirmacao(), Cliente, Servico]
                 lista.append(list)
             th = ["Id", "data", "confirmacao", "Cliente", "Serviço"]
             data = pd.DataFrame(lista, columns=th)

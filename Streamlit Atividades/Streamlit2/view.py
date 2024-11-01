@@ -8,7 +8,10 @@ class View:
    @staticmethod
    def cliente_listar():
       return Clientes.listar()
-      
+   
+   @staticmethod
+   def cliente_listar_id(id):
+      return Clientes.listar_id(id)
    
    @staticmethod
    def cliente_inserir(nome, email, fone, senha):
@@ -60,16 +63,19 @@ class View:
    def horario_abrir_agenda (data, hora_inicial, hora_final, intervalos):
        hora_inicial = datetime.strptime(data + " " + hora_inicial, "%d/%m/%Y %H:%M")
        hora_final = datetime.strptime(data + " " + hora_final, "%d/%m/%Y %H:%M")
-       intervalos = timedelta(minutes=intervalos)
+       intervalos = timedelta(minutes=int(intervalos))
 
-       while hora_inicial > hora_final:
-           View.horario_inserir(hora_inicial)
+       while hora_inicial < hora_final:
+           View.horario_inserir(hora_inicial, False, 0, 0)
            hora_inicial += intervalos
    
    @staticmethod
    def servico_listar():
       return Servicos.listar()
       
+   @staticmethod
+   def servico_listar_id(id):
+      return Servicos.listar_id(id)
    
    @staticmethod
    def servico_inserir(desc, v, d):
