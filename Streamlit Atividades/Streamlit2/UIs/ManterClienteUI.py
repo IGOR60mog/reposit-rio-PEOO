@@ -47,10 +47,10 @@ class ManterClientesUI:
     @staticmethod
     def atualizar():
         cliente = st.selectbox("Atualização de clientes", View.cliente_listar(), key=0)
-        nome = st.text_input("Informe novo nome: ")
-        email = st.text_input("Informe novo email: ")
-        fone = st.text_input("Informe novo telefone: ")
-        senha = st.text_input("Informe nova senha: ")
+        nome = st.text_input("Informe novo nome: ", cliente.get_nome())
+        email = st.text_input("Informe novo email: ", cliente.get_email())
+        fone = st.text_input("Informe novo telefone: ", cliente.get_fone())
+        senha = st.text_input("Informe nova senha: ", cliente.get_senha())
         if st.button("Atualizar"):
             st.write("Cliente atualizado com sucesso!")
             View.cliente_atualizar(cliente.get_id(), nome, email, fone, senha)
