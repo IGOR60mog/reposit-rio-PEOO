@@ -72,14 +72,9 @@ class View:
         return lista_solicitacao
     
     def solicitacao_confirmar(h):
-        print(x)
-        print(h)
         for x in View.horario_listar():
             if x.data == h.data:
-                x.confirmado = h.confirmado
-                x.id_servico = h.id_servico
-                x.id_cliente = h.id_cliente
-                print(x)
+                View.horario_atualizar(x.id, x.data, h.confirmado, h.id_cliente, h.id_servico)
                 View.horario_excluir(h.id)
 
     def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo):

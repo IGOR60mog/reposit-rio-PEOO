@@ -18,10 +18,14 @@ class ConfirmarAgendamentoUI:
             solicitacoes.append(dic)
         st.dataframe(solicitacoes, 1000, hide_index=True)
 
-        op = st.selectbox("Escolha para confirmar", View.solicitacao_abrir())
+        op = st.selectbox("Escolha uma solicitação", View.solicitacao_abrir())
 
         if st.button("Confirmar"):
             View.solicitacao_confirmar(op)
+            st.success("Soliticação confirmada com sucesso")
+            time.sleep(2)
+            st.rerun()
+            
 
 
         
