@@ -36,8 +36,8 @@ class View:
     def horario_inserir(data, confirmado, id_cliente, id_servico):
         c = Horario(0, data)
         c.confirmado = confirmado
-        c.id_cliente = id_cliente
-        c.id_servico = id_servico
+        c.cliente = id_cliente
+        c.servico = id_servico
         Horarios.inserir(c)
 
     def horario_listar():
@@ -47,7 +47,7 @@ class View:
         horarios = View.horario_listar()
         disponiveis = []
         for h in horarios:
-            if h.data >= datetime.now() and h.id_cliente == None: disponiveis.append(h)
+            if h.data >= datetime.now() and h.id_cliente == 0: disponiveis.append(h)
         return disponiveis   
 
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico):
@@ -60,6 +60,17 @@ class View:
     def horario_excluir(id):
         c = Horario(id, None)
         Horarios.excluir(c)    
+
+    def solicitacao_abrir():
+        lista_revisao = []
+        lista_solicitacao = []
+        for x in View.horario_listar():
+            if x not in lista_revisao:
+                lista_revisao.append(x)
+            else:
+                lista_solicitacao.append(x)
+                View.horario_excluir(x.id)
+        return lista_solicitacao
 
     def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo):
         #data = "05/11/2024"
@@ -95,3 +106,5 @@ class View:
     def servico_excluir(id):
         c = Servico(id, "", 0, 0)
         Servicos.excluir(c)    
+
+    
