@@ -81,7 +81,7 @@ class Horarios:
           c.confirmado = obj["confirmado"]
           c.id_cliente = obj["id_cliente"]
           c.id_servico = obj["id_servico"]
-          c.id_profissional = obj["id_profisisonal"]
+          c.id_profissional = obj["id_profissional"]
           cls.objetos.append(c)
     except FileNotFoundError:
       pass

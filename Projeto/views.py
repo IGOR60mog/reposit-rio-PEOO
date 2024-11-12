@@ -77,7 +77,7 @@ class View:
         x = di
         while x <= df:
             #cadastrar o horário x
-            View.horario_inserir(x, False, None, None)
+            View.horario_inserir(x, False, None, None, None)
             #passar para o próximo horário
             x = x + d
 

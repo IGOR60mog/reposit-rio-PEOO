@@ -62,16 +62,18 @@ class ManterHorarioUI:
             clientes = View.cliente_listar()
             servicos = View.servico_listar()
             profissionais = View.profissional_listar()
-            
+
             op = st.selectbox("Atualização de horário", horarios)
             data = st.text_input("Informe a nova data e horário do serviço", op.data.strftime("%d/%m/%Y %H:%M"))
             confirmado = st.checkbox("Nova confirmação", op.confirmado)
             id_cliente = None if op.id_cliente in [0, None] else op.id_cliente
             id_servico = None if op.id_servico in [0, None] else op.id_servico
+            id_profissional = None if op.id_profissional in [0, None] else op.id_profissional
 
             cliente = st.selectbox("Informe o novo cliente", clientes, next((i for i, c in enumerate(clientes) if c.id == id_cliente), None))
             servico = st.selectbox("Informe o novo serviço", servicos, next((i for i, s in enumerate(servicos) if s.id == id_servico), None))
-            profissional = st.selectbox("Informe o profissional", profissionais, index = None)
+            profissional = st.selectbox("Informe o novo profissional", profissionais, next((i for i, s in enumerate(profissionais) if s.id == id_profissional), None))
+            # profissional = st.selectbox("Informe o profissional", profissionais, index = 0)
 
             if st.button("Atualizar"):
                 id_cliente = None
