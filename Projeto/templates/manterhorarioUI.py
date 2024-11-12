@@ -21,12 +21,18 @@ class ManterHorarioUI:
             dic = []
             #for obj in Horarios: dic.append(obj.__dict__)
 
+            "Não se repetetira"
+            lista_antirepeticao = []
+
             for obj in horarios:
                 cliente = View.cliente_listar_id(obj.id_cliente)
                 servico = View.servico_listar_id(obj.id_servico)
                 if cliente != None: cliente = cliente.nome
                 if servico != None: servico = servico.descricao
-                dic.append({"id" : obj.id, "data" : obj.data, "confirmado" : obj.confirmado, "cliente" : cliente, "serviço" : servico})
+
+                if obj.data not in lista_antirepeticao:
+                    dic.append({"id" : obj.id, "data" : obj.data, "confirmado" : obj.confirmado, "cliente" : cliente, "serviço" : servico})
+                    lista_antirepeticao.append(obj.data)
             
             df = pd.DataFrame(dic)
             st.dataframe(df)

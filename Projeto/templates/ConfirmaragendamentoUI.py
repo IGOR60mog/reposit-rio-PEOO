@@ -7,13 +7,21 @@ class ConfirmarAgendamentoUI:
 
     def main():
         st.header("Confirmar Agendamento")
-        solicitacoes = View.solicitacao_abrir()
+
+        solicitacoes = []
+        for x in View.solicitacao_abrir():
+            Cliente = View.cliente_listar_id(x.id_cliente)
+            Servico = View.servico_listar_id(x.id_servico)
+            if Cliente != None: Cliente = Cliente.nome
+            if Servico != None: Servico = Servico.descricao
+            dic = {"id": x.id,"data": x.data,"cliente": Cliente,"servico": Servico}
+            solicitacoes.append(dic)
         st.dataframe(solicitacoes, 1000, hide_index=True)
 
-        
+        op = st.selectbox("Escolha para confirmar", View.solicitacao_abrir())
 
         if st.button("Confirmar"):
-            print("X")
+            View.solicitacao_confirmar(op)
 
 
         

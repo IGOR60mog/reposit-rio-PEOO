@@ -6,7 +6,7 @@ class Horario:
         self.id = id
         self.data = data
         self.confirmado = False
-        self.id_cliente = 0
+        self.id_cliente = None
         self.id_servico = 0
     def __str__(self):
         return f"{self.id} - {self.data}"
