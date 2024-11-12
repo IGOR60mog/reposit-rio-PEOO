@@ -1,7 +1,6 @@
 from models.cliente import Cliente, Clientes
 from models.horario import Horario, Horarios
 from models.servico import Servico, Servicos
-from models.profissional import Profissional, Profissionais
 from datetime import datetime, timedelta
 
 class View:
@@ -34,12 +33,11 @@ class View:
                 return {"id" : c.id, "nome" : c.nome }
         return None
 
-    def horario_inserir(data, confirmado, id_cliente, id_servico, id_profissional):
+    def horario_inserir(data, confirmado, e, s):
         c = Horario(0, data)
         c.confirmado = confirmado
-        c.id_cliente = id_cliente
-        c.id_servico = id_servico
-        c.id_profissional = id_profissional
+        c.id_cliente = int(e)
+        c.id_servico = int(s)
         Horarios.inserir(c)
 
     def horario_listar():
@@ -49,20 +47,35 @@ class View:
         horarios = View.horario_listar()
         disponiveis = []
         for h in horarios:
-            if h.data >= datetime.now() and h.id_cliente == None: disponiveis.append(h)
+            if h.data >= datetime.now() and h.id_cliente == 0: disponiveis.append(h)
         return disponiveis   
 
-    def horario_atualizar(id, data, confirmado, id_cliente, id_servico, id_profissional):
+    def horario_atualizar(id, data, confirmado, id_cliente, id_servico):
         c = Horario(id, data)
         c.confirmado = confirmado
         c.id_cliente = id_cliente
         c.id_servico = id_servico
-        c.id_profissional = id_profissional
         Horarios.atualizar(c)
 
     def horario_excluir(id):
         c = Horario(id, None)
         Horarios.excluir(c)    
+
+    def solicitacao_abrir():
+        lista_revisao = []
+        lista_solicitacao = []
+        for x in View.horario_listar():
+            if x.data not in lista_revisao:
+                lista_revisao.append(x.data)
+            else:
+                lista_solicitacao.append(x)
+        return lista_solicitacao
+    
+    def solicitacao_confirmar(h):
+        for x in View.horario_listar():
+            if x.data == h.data:
+                View.horario_atualizar(x.id, x.data, h.confirmado, h.id_cliente, h.id_servico)
+                View.horario_excluir(h.id)
 
     def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo):
         #data = "05/11/2024"
@@ -99,25 +112,4 @@ class View:
         c = Servico(id, "", 0, 0)
         Servicos.excluir(c)    
 
-
-
-
-    """parte nova"""
-
-    def profissional_inserir(nome, especialidade, conselho):
-        c = Profissional(0, nome, especialidade, conselho)
-        Profissionais.inserir(c)
-
-    def profissional_listar():
-        return Profissionais.listar()    
-
-    def profissional_listar_id(id):
-        return Profissionais.listar_id(id)    
-
-    def profissional_atualizar(id, nome, especialidade, conselho):
-        c = Profissional(id, nome, especialidade, conselho)
-        Profissionais.atualizar(c)
-
-    def profissional_excluir(id):
-        c = Profissional(id, "", "", "", "")
-        Profissionais.excluir(c)  
+    

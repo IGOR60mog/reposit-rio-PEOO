@@ -19,9 +19,12 @@ class ManterClienteUI:
         else:    
             #for obj in clientes: st.write(obj)
             dic = []
-            for obj in clientes: dic.append(obj.__dict__)
+            for obj in clientes: 
+                Cliente = obj.__dict__
+                del(Cliente["senha"])
+                dic.append(Cliente)
             df = pd.DataFrame(dic)
-            st.dataframe(df)
+            st.dataframe(df, 1000, hide_index=True)
 
     def inserir():
         nome = st.text_input("Informe o nome do cliente")
