@@ -15,26 +15,26 @@ class Cliente:
     self.__fone = fone
     self.__senha = senha
 
-    if nome == "": raise ValueError("Nome não pode ser vazio")
-    if email == "": raise ValueError("Email não pode ser vazio")
-    if fone == "": raise ValueError("Fone não pode ser vazio")
-    if senha == "": raise ValueError("Senha não pode ser vazio")
+    if nome == "": raise ValueError("Erro! Nome não pode ser vazio")
+    if email == "": raise ValueError("Erro! Email não pode ser vazio")
+    if fone == "": raise ValueError("Erro! Fone não pode ser vazio")
+    if senha == "": raise ValueError("Erro! Senha não pode ser vazio")
     
   def set_id(self, id):
     if id > 0: self.__id = id
-    else: raise ValueError("Id não pode ser 0")
+    else: raise ValueError("Erro! Id não pode ser 0")
   def set_nome(self, nome):
     if nome != "": self.__nome = nome
-    else: raise ValueError("Nome não pode ser vazio")
+    else: raise ValueError("Erro! Nome não pode ser vazio")
   def set_email(self, email):
     if email != "": self.__email = email
-    else: raise ValueError("Email não pode ser vazio")
+    else: raise ValueError("Erro! Email não pode ser vazio")
   def set_fone(self, fone):
     if fone != "": self.__fone = fone
-    else: raise ValueError("Fone não pode ser vazio")
+    else: raise ValueError("Erro! Fone não pode ser vazio")
   def set_senha(self, senha):
     if senha != "": self.__senha = senha
-    else: raise ValueError("Senha não pode ser vazio")
+    else: raise ValueError("Erro! Senha não pode ser vazio")
 
 
   def get_id(self): return self.__id

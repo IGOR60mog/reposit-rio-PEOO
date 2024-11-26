@@ -54,9 +54,8 @@ class ManterHorarioUI:
                 st.success("Horário inserido com sucesso")
                 time.sleep(2)
                 st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)
 
     def atualizar():
         try:
@@ -82,9 +81,8 @@ class ManterHorarioUI:
                     st.success("Horário atualizado com sucesso")
                     time.sleep(2)
                     st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)
 
     def excluir():
         try:
@@ -98,6 +96,5 @@ class ManterHorarioUI:
                     st.success("Horário excluído com sucesso")
                     time.sleep(2)
                     st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)

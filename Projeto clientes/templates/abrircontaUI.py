@@ -23,6 +23,5 @@ class AbrirContaUI:
                     st.success("Conta criada com sucesso")
                     time.sleep(2)
                     st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)

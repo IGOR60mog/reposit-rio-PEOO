@@ -8,25 +8,25 @@ class Servico:
     self.__valor = valor
     self.__duracao = duracao
 
-    if descricao == "": raise ValueError("descricao não pode ser vazio")
-    if valor <= 0: raise ValueError("valor não pode ser vazio")
-    if duracao <= 0: raise ValueError("duracao não pode ser vazio")
+    if descricao == "": raise ValueError("Erro! Descrição não pode ser vazio")
+    if valor <= 0: raise ValueError("Erro! Valor não pode ser vazio")
+    if duracao <= 0: raise ValueError("Erro! Duração não pode ser vazio")
 
   def set_id(self, id):
     if id > 0: self.__id = id
-    else: raise ValueError("id não pode ser 0")
+    else: raise ValueError("Erro! Id não pode ser 0")
 
   def set_descricao(self, descricao):
     if descricao != "": self.__descricao = descricao
-    else: raise ValueError("descricao não pode ser vazio")
+    else: raise ValueError("Erro! Descrição não pode ser vazio")
 
   def set_valor(self, valor):
     if valor > 0: self.__valor = valor
-    else: raise ValueError("valor tem que ser maior que zero")
+    else: raise ValueError("Erro! valor tem que ser maior que zero")
 
   def set_duracao(self, duracao):
     if duracao != "": self.__duracao = duracao
-    else: raise ValueError("duração tem que ser maior que zero")
+    else: raise ValueError("Erro! Duração tem que ser maior que zero")
 
   def get_id(self): return self.__id
   def get_descricao(self): return self.__descricao

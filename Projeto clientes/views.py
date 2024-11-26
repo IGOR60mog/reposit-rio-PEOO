@@ -12,7 +12,7 @@ class View:
     def cliente_inserir(nome, email, fone, senha):
             for x in View.cliente_listar():
                 if x.get_email() == email:
-                    raise ValueError("Email já cadastrado!")
+                    raise ValueError("Erro! Email já cadastrado!")
             c = Cliente(0, nome, email, fone, senha)
             Clientes.inserir(c)
 
@@ -26,14 +26,14 @@ class View:
     def cliente_atualizar(id, nome, email, fone, senha):
         for x in View.cliente_listar():
                 if x.get_email() == email:
-                    raise ValueError("Email já cadastrado!")
+                    raise ValueError("Erro! Email já cadastrado!")
         c = Cliente(id, nome, email, fone, senha)
         Clientes.atualizar(c)
 
     def cliente_excluir(id):
         for x in View.horario_listar():
             if x.get_id_cliente() == id:
-                raise ValueError("Você não pode excluir cliente com horário marcado")
+                raise ValueError("Erro! Você não pode excluir cliente com horário marcado")
         c = Cliente(id, "", "", "", "")
         Clientes.excluir(c)    
 
@@ -46,7 +46,7 @@ class View:
     def horario_inserir(data, confirmado, e, s):
 
         if View.cliente_listar_id(int(e)) == None or View.servico_listar_id(int(s)) == None:
-            raise ValueError("Id do cliente e Id do serviço têm que ser válidos!")
+            raise ValueError("Erro! Id do cliente e Id do serviço têm que ser válidos!")
 
         c = Horario(0, data)
         c.set_confirmado(confirmado)
@@ -67,7 +67,7 @@ class View:
     def horario_atualizar(id, data, confirmado, id_cliente, id_servico):
 
         if View.cliente_listar_id(id_cliente) == None or View.servico_listar_id(id_servico) == None:
-            raise ValueError("Id do cliente e Id do serviço têm que ser válidos!")
+            raise ValueError("Erro! Id do cliente e Id do serviço têm que ser válidos!")
         
         c = Horario(id, data)
         c.set_confirmado(confirmado)
@@ -80,7 +80,7 @@ class View:
         for x in View.horario_listar():
             if x.get_id() == id:
                 if x.get_id_cliente() > 0:
-                    raise ValueError("Não pode excluir horário com cliente já cadastrado")
+                    raise ValueError("Erro! Não pode excluir horário com cliente já cadastrado")
     
         c = Horario(id, None)
         Horarios.excluir(c)    
@@ -103,10 +103,10 @@ class View:
 
     def horario_abrir_agenda(data, hora_inicio, hora_fim, intervalo):
 
-        if data == datetime.now(): raise ValueError("Data não pode ser agora")
-        if hora_inicio <= 0: raise ValueError("Hora inicial tem que ser maior que zero")
-        if hora_fim <=0: raise ValueError("Hora final tem que ser maior que zero")
-        if intervalo <=0: raise ValueError("intervalo tem que ser maior que zero")
+        if data == datetime.now(): raise ValueError("Erro! Data não pode ser agora")
+        if hora_inicio <= 0: raise ValueError("Erro! Hora inicial tem que ser maior que zero")
+        if hora_fim <=0: raise ValueError("Erro! Hora final tem que ser maior que zero")
+        if intervalo <=0: raise ValueError("Erro! intervalo tem que ser maior que zero")
 
         i = data + " " + hora_inicio   
         f = data + " " + hora_fim      
@@ -137,7 +137,7 @@ class View:
     def servico_excluir(id):
         for x in View.horario_listar():
             if x.get_id_servico() == id:
-                raise ValueError("Você não pode excluir serviço com horário marcado")
+                raise ValueError("Erro! Você não pode excluir serviço com horário marcado")
         c = Servico(id, "", 0, 0)
         Servicos.excluir(c)    
 

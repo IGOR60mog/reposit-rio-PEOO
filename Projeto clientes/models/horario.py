@@ -11,23 +11,23 @@ class Horario:
 
     def set_id(self, id):
       if id > 0: self.__id = id
-      else: raise ValueError("Id tem que ser maior que 0")
+      else: raise ValueError("Erro! Id tem que ser maior que 0")
 
     def set_data(self, data):
       if data != datetime.now(): self.__data = data
-      else: raise ValueError("data não pode ser agora")
+      else: raise ValueError("Erro! data não pode ser agora")
 
     def set_confirmado(self, confirmado):
       if confirmado != False: self.__confirmado = confirmado
-      else: raise ValueError("confirmado não pode ser falso")
+      else: raise ValueError("Erro! confirmado não pode ser falso")
 
     def set_id_cliente(self, id_cliente):
       if id_cliente > 0: self.__id_cliente = id_cliente
-      else: raise ValueError("Id cliente tem que ser maior que 0")
+      else: raise ValueError("Erro! Id cliente tem que ser maior que 0")
 
     def set_id_servico(self, id_servico):
       if id_servico > 0: self.__id_servico = id_servico
-      else: raise ValueError("Id serviço tem que ser maior que 0")
+      else: raise ValueError("Erro! Id serviço tem que ser maior que 0")
 
 
     def get_id(self): return self.__id

@@ -38,8 +38,7 @@ class ManterClienteUI:
                 time.sleep(2)
                 st.rerun()
         except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+            st.write(erro.args)
 
     def atualizar():
         try:
@@ -48,18 +47,17 @@ class ManterClienteUI:
                 st.write("Nenhum cliente cadastrado")
             else:
                 op = st.selectbox("Atualização de cliente", clientes)
-                nome = st.text_input("Informe o novo nome do cliente", op.nome)
-                email = st.text_input("Informe o novo e-mail", op.email)
-                fone = st.text_input("Informe o novo fone", op.fone)
-                senha = st.text_input("Informe a nova senha", op.senha, type="password")
+                nome = st.text_input("Informe o novo nome do cliente", op.get_nome())
+                email = st.text_input("Informe o novo e-mail", op.get_email())
+                fone = st.text_input("Informe o novo fone", op.get_fone())
+                senha = st.text_input("Informe a nova senha", op.get_senha(), type="password")
                 if st.button("Atualizar"):
                     View.cliente_atualizar(op.id, nome, email, fone, senha)
                     st.success("Cliente atualizado com sucesso")
                     time.sleep(2)
                     st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)
 
     def excluir():
         try:
@@ -73,6 +71,5 @@ class ManterClienteUI:
                     st.success("Cliente excluído com sucesso")
                     time.sleep(2)
                     st.rerun()
-        except Exception as erro:
-            st.write(type(erro))
-            st.write(erro)
+        except ValueError as erro:
+            st.write(erro.args)
