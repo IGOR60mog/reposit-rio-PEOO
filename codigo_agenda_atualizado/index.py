@@ -6,6 +6,8 @@ from templates.abrircontaUI import AbrirContaUI
 from templates.listarhorarioUI import ListarHorarioUI
 from templates.manterperfilUI import ManterPerfilUI
 from templates.ManterProfissionais import ManterProfissionalUI
+from templates.alterardados import AlterardadosUI
+from templates.profissionalagendaUI import ProfissionalAgendaUI
 from templates.loginUI import LoginUI
 from views import View
 
@@ -18,17 +20,24 @@ class IndexUI:
         if op == "Abrir Conta": AbrirContaUI.main()
                
     def menu_admin():            
-        op = st.sidebar.selectbox("Menu", ["Cadastro de Clientes", "Cadastro de Horários", "Cadastro de Serviços", "Cadastro de Perfis", "Cadastro de Profissional", "Abrir Agenda do Dia"])
+        op = st.sidebar.selectbox("Menu", ["Cadastro de Clientes", "Cadastro de Horários", "Cadastro de Serviços", "Cadastro de Perfis", "Cadastro de Profissional", "Abrir Agenda do Dia", "Alterar meus dados"])
         if op == "Cadastro de Clientes": ManterClienteUI.main()
         if op == "Cadastro de Horários": ManterHorarioUI.main()
         if op == "Cadastro de Serviços": ManterServicoUI.main()
         if op == "Cadastro de Perfis": ManterPerfilUI.main()
         if op == "Cadastro de Profissional": ManterProfissionalUI.main()
         if op == "Abrir Agenda do Dia": AbrirAgendaUI.main()
+        if op == "Alterar meus dados": AlterardadosUI.main()
 
+    def menu_profissional():
+        op = st.sidebar.selectbox("Menu", ["Visualizar a minha agenda", "Alterar meus dados"])
+        if op == "Visualizar a minha agenda": ProfissionalAgendaUI.main()
+        if op == "Abrir Agenda do Dia": AbrirAgendaUI.main()
+        
     def menu_cliente():
-        op = st.sidebar.selectbox("Menu", ["Horários Disponíveis"])
+        op = st.sidebar.selectbox("Menu", ["Horários Disponíveis", "Alterar meus dados"])
         if op == "Horários Disponíveis": ListarHorarioUI.main()
+        if op == "Abrir Agenda do Dia": AbrirAgendaUI.main()
 
     def sair_do_sistema():
         if st.sidebar.button("Sair"):
