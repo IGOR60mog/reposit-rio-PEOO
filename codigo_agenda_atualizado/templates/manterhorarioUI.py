@@ -19,7 +19,6 @@ class ManterHorarioUI:
             st.write("Nenhum horário cadastrado")
         else:  
             dic = []
-            #for obj in Horarios: dic.append(obj.__dict__)
 
             for obj in horarios:
                 cliente = View.cliente_listar_id(obj.id_cliente)

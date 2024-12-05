@@ -26,11 +26,19 @@ class ManterProfissionalUI():
             st.dataframe(df)
 
     def inserir():
-        nome = st.text_input("Informe o nome do profissional")
+        clientes = View.cliente_listar()
+        if len(clientes) == 0: 
+            st.write("Nenhum serviço cadastrado")
+
+        cliente = st.selectbox("Informe o profissional", clientes)
+        nome = st.text_input("Informe o nome", cliente.nome)
         especialidade = st.text_input("Informe a especialidade")
         conselho = st.text_input("Informe o conselho")
+        email = cliente.email
+        senha = cliente.senha
         if st.button("Inserir"):
-            View.profissional_inserir(nome, especialidade, conselho)
+            View.profissional_inserir(nome, especialidade, conselho, email, senha)
+            View.cliente_excluir(cliente.id)
             st.success("profissional inserido com sucesso")
             time.sleep(2)
             st.rerun()

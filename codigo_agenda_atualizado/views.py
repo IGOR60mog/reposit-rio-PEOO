@@ -4,16 +4,24 @@ from models.servico import Servico, Servicos
 from models.profissional import Profissional, Profissionais
 from models.perfil import Perfil, Perfis
 from datetime import datetime, timedelta
+import streamlit as st
 
 class View:
     def cliente_admin():
         for c in View.cliente_listar():
             if c.email == "admin": return
-        View.cliente_inserir("admin", "admin", "1234", "1234")
+        View.cliente_inserir("admin", "admin", "1234", "1234", 0)
 
-    # def cliente_profisssional():
+    def profissional_agenda(prof):
+        lista = []
+        for x in View.horario_listar():
+            id = x.id_profissional
+            cliente = View.profissional_listar_id(id)
+            if cliente.nome == prof:
+                lista.append(x)
+        return lista
 
-    #def profissional_agenda():
+        
 
     def cliente_inserir(nome, email, fone, senha, id_perfil):
         c = Cliente(0, nome, email, fone, senha, id_perfil)
@@ -30,13 +38,19 @@ class View:
         Clientes.atualizar(c)
 
     def cliente_excluir(id):
-        c = Cliente(id, "", "", "", "")
+        c = Cliente(id, "", "", "", "", "")
         Clientes.excluir(c)    
 
     def cliente_autenticar(email, senha):
         for c in View.cliente_listar():
             if c.email == email and c.senha == senha:
                 return {"id" : c.id, "nome" : c.nome }
+        return None
+    
+    def profissional_autenticar(email, senha):
+        for p in View.profissional_listar():
+            if p.email == email and p.senha == senha:
+                return {"id" : p.id, "nome" : p.nome, "email": p.email }
         return None
 
     def perfil_inserir(nome, descricao, beneficios):
@@ -122,13 +136,8 @@ class View:
         c = Servico(id, "", 0, 0)
         Servicos.excluir(c)    
 
-
-
-
-    """parte nova"""
-
-    def profissional_inserir(nome, especialidade, conselho):
-        c = Profissional(0, nome, especialidade, conselho)
+    def profissional_inserir(nome, especialidade, conselho, email, senha):
+        c = Profissional(0, nome, especialidade, conselho, email, senha)
         Profissionais.inserir(c)
 
     def profissional_listar():
@@ -137,10 +146,10 @@ class View:
     def profissional_listar_id(id):
         return Profissionais.listar_id(id)    
 
-    def profissional_atualizar(id, nome, especialidade, conselho):
-        c = Profissional(id, nome, especialidade, conselho)
+    def profissional_atualizar(id, nome, especialidade, conselho, email, senha):
+        c = Profissional(id, nome, especialidade, conselho, email, senha)
         Profissionais.atualizar(c)
 
     def profissional_excluir(id):
-        c = Profissional(id, "", "", "", "")
+        c = Profissional(id, "", "", "", "", "")
         Profissionais.excluir(c)  
