@@ -6,9 +6,9 @@ from templates.abrircontaUI import AbrirContaUI
 from templates.listarhorarioUI import ListarHorarioUI
 from templates.manterperfilUI import ManterPerfilUI
 from templates.ManterProfissionais import ManterProfissionalUI
+from templates.loginUI import LoginUI
 from templates.alterardados import AlterardadosUI
 from templates.profissionalagendaUI import ProfissionalAgendaUI
-from templates.loginUI import LoginUI
 from views import View
 
 import streamlit as st
