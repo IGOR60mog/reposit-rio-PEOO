@@ -38,7 +38,7 @@ class ManterClienteUI:
                 time.sleep(2)
                 st.rerun()
         except Exception as erro:
-            st.write(erro.args)
+            st.error(erro)
 
     def atualizar():
         try:
@@ -57,7 +57,8 @@ class ManterClienteUI:
                     time.sleep(2)
                     st.rerun()
         except ValueError as erro:
-            st.write(erro.args)
+            st.error(erro)
+
 
     def excluir():
         try:
