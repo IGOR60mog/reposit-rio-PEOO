@@ -13,6 +13,8 @@ class View:
 
     # def cliente_profisssional():
 
+    #def profissional_agenda():
+
     def cliente_inserir(nome, email, fone, senha, id_perfil):
         c = Cliente(0, nome, email, fone, senha, id_perfil)
         Clientes.inserir(c)
