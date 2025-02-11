@@ -3,7 +3,7 @@ from crud import *
 
 
 class Pergunta:
-    def __init__(self,id, idC, c):
+    def __init__(self, id, idC, c):
         self.__id = id
         self.__id_curso = idC
         self.__conteudo = c
@@ -12,10 +12,10 @@ class Pergunta:
         self.set_id_curso(idC)
         self.set_conteudo(c)
 
-    def set_id(self, id):
-      self.__id = id        
+    def set_id(self, id): self.__id = id        
     def set_id_curso (self, idC):
-      self.__id_curso = idC
+      if idC < 0: raise ValueError("Curso inválido")
+      else: self.__id_curso = idC
     def set_conteudo (self, c):
        if c == "": raise ValueError("Conteúdo vazio")
        else: self.__conteudo = c

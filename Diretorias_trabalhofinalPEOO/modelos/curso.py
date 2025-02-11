@@ -26,7 +26,7 @@ class Curso:
     def set_descricao(self, d):
         if d == "": raise ValueError("Descrição vazia!")
         else: self.__descricao = d
-    def set_email(self, du):
+    def set_duracao(self, du):
         if du == "": raise ValueError("Email vazio!")
         else: self.__duracao = du
   

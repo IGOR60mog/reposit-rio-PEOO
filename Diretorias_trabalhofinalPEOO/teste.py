@@ -4,7 +4,6 @@ from modelos.questionario import *
 from modelos.pergunta import *
 from modelos.diretoria import *
 from modelos.curso import *
-from datetime import datetime
 
 
 #USUARIO
@@ -33,11 +32,11 @@ from datetime import datetime
 # r = Resposta(1, 2, 2, 5)
 # Respostas.atualizar(r)
 
-# r = Resposta(1, "#", "#", 0)
+# r = Resposta(1, 0, 0, 0)
 # Respostas.excluir(r)
 
-for x in Respostas.listar():
-    print(x)
+# for x in Respostas.listar():
+#     print(x)
 
 
 
@@ -65,7 +64,7 @@ for x in Respostas.listar():
 # p = Pergunta(1, 2, "Você se interessa em saber como funciona uma máquina?")
 # Perguntas.atualizar(p)
 
-# p = Pergunta(1, "#", "#")
+# p = Pergunta(1, 0, "#")
 # Perguntas.excluir(p)
 
 # for x in Perguntas.listar():
@@ -75,17 +74,17 @@ for x in Respostas.listar():
 
 #DIRETORIA
 
-# d = Diretoria(0, "DIATINF", "Tecnologia da informação", "diatinf@email.com")
-# Diretorias.inserir(d)
+d = Diretoria(0, "DIATINF", "Tecnologia da informação", "diatinf@email.com")
+Diretorias.inserir(d)
 
-# d = Diretoria(1, "DIATINF", "Gestão e tecnologia da informação", "diatinf@email.com")
-# Diretorias.atualizar(d)
+d = Diretoria(1, "DIATINF", "Gestão e tecnologia da informação", "diatinf@email.com")
+Diretorias.atualizar(d)
 
-# d = Diretoria(1, "#", "#", "#")
-# Diretorias.excluir(d)
+d = Diretoria(1, "#", "#", "#")
+Diretorias.excluir(d)
 
-# for x in Diretorias.listar():
-#     print(x)
+for x in Diretorias.listar():
+    print(x)
 
 
 
@@ -97,7 +96,7 @@ for x in Respostas.listar():
 # c = Curso(1, 1, "Informática para Internet", "Área de desenvolvedor web", 4)
 # Cursos.atualizar(c)
 
-# c = Curso(1, 1, "#", "#", 0)
+# c = Curso(1, 0, "#", "#", 0)
 # Cursos.excluir(c)
 
 # for x in Cursos.listar():

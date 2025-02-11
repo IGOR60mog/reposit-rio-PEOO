@@ -27,9 +27,9 @@ class Diretoria:
         else: self.__email = e
 
     def get_id(self): return self.__id
-    def get_id(self): return self.__nome
-    def get_id(self): return self.__finalidade
-    def get_id(self): return self.__email
+    def get_nome(self): return self.__nome
+    def get_finalidade(self): return self.__finalidade
+    def get_email(self): return self.__email
     
     def to_json(self):
        dic = {}
