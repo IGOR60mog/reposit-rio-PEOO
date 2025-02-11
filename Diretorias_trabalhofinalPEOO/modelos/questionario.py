@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from crud import *
 
 
@@ -11,17 +12,20 @@ class Questionario:
 
     def set_id(self, id):
       self.__id = id
+    def set_data(self, obj):
+       if obj != datetime(1, 1, 1): self.__data = obj
+       else: raise ValueError("Data inválida")
 
     def to_json(self):
        dic = {}
        dic["id"] = self.__id
-       dic["id_pergunta"] = self.__id_pergunta
-       dic["id_questionario"] = self.__id_questionario
-       dic["resposta"] = self.__resposta
+       dic["id_usuario"] = self.__id_usuario
+       dic["data"] = self.__data.strftime("%d/%m/%Y")  
+       dic["pontos"] = self.__pontos
        return dic
     
     def __str__(self):
-        return f"id - {self.__id}, usuario - {self.__id_usuario} data - {self.__data} - pontos {self.__pontos}"
+        return f"id - {self.__id}, usuario - {self.__id_usuario}, data - {self.__data}, pontos - {self.__pontos}"
     
 class Questionarios (CRUD):
   @classmethod
@@ -36,7 +40,8 @@ class Questionarios (CRUD):
       with open("questionarios.json", mode="r") as arquivo:   # r - read
         texto = json.load(arquivo)
         for obj in texto:   
-          c = Questionario(obj["id"], obj["id_usuario"], obj["data"], obj["pontos"])
+          data = datetime.strptime(obj["data"], "%d/%m/%Y")
+          c = Questionario(obj["id"], obj["id_usuario"], data, obj["pontos"])
           cls.objetos.append(c)
     except FileNotFoundError:
       pass   

@@ -6,13 +6,17 @@ class CRUD(ABC):
 
   @classmethod
   def inserir(cls, obj):
-    cls.abrir()
-    m = 0
-    for c in cls.objetos:
-      if c.get_id() > m: m = c.get_id()
-    obj.set_ = m + 1
+    if cls.objetos != []:
+        cls.abrir()
+        m = 0
+        for c in cls.objetos:
+            if c.get_id() > m: m = c.get_id()
+            x = m + 1
+            obj.set_id(x)
+    else:
+      obj.set_id(1)
     cls.objetos.append(obj)
-    cls.salvar()
+    cls.salvar() 
 
   @classmethod
   def listar_id(cls, id):
@@ -23,7 +27,8 @@ class CRUD(ABC):
   
   @classmethod
   def atualizar(cls, obj):
-    c = cls.listar_id(obj.get_id())
+    id = obj.get_id()
+    c = cls.listar_id(id)
     if c != None:
       cls.objetos.remove(c)
       cls.objetos.append(obj)

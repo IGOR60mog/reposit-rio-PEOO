@@ -16,15 +16,14 @@ class Resposta:
     def set_id(self, id):
       self.__id = id 
     def set_id_pergunta(self, idP):
-       if idP < 0: raise ValueError("Id Pergunta inválido")
-       else: self.__id_pergunta = idP
+      self.__id_pergunta = idP
 
     def set_id_questionario(self, idQ):
-       if idQ < 0: raise ValueError("Id Questionário inválido")
-       else: self.__id_questionario = idQ
+      self.__id_questionario = idQ
 
     def set_resposta (self, r):
        if r == "": raise ValueError("Resposta inválida")
+       else: self.__resposta = r
 
     def get_id(self): return self.__id
     def get_id_pergunta(self): return self.__id_pergunta
