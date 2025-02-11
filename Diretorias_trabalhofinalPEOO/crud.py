@@ -27,8 +27,7 @@ class CRUD(ABC):
   
   @classmethod
   def atualizar(cls, obj):
-    id = obj.get_id()
-    c = cls.listar_id(id)
+    c = cls.listar_id(obj.get_id())
     if c != None:
       cls.objetos.remove(c)
       cls.objetos.append(obj)

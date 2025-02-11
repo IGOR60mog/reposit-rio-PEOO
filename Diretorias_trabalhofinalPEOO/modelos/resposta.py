@@ -9,6 +9,7 @@ class Resposta:
         self.__id_questionario = idQ
         self.__resposta = r
 
+        self.set_id(id)
         self.set_id_pergunta(idP)
         self.set_id_questionario(idQ)
         self.set_resposta(r)
@@ -22,8 +23,8 @@ class Resposta:
       self.__id_questionario = idQ
 
     def set_resposta (self, r):
-       if r == "": raise ValueError("Resposta inválida")
-       else: self.__resposta = r
+      if r >= 0: self.__resposta = r
+      else: raise ValueError("Resposta inválida")
 
     def get_id(self): return self.__id
     def get_id_pergunta(self): return self.__id_pergunta

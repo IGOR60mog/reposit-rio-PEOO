@@ -10,11 +10,29 @@ class Questionario:
         self.__data = d
         self.__pontos = p
 
+        self.set_id(id)
+        self.set_id_usuario(idU)
+        self.set_data(d)
+        self.set_pontos(p)
+
     def set_id(self, id):
       self.__id = id
-    def set_data(self, obj):
-       if obj != datetime(1, 1, 1): self.__data = obj
+
+    def set_id_usuario(self, idU):
+       self.__id_usuario = idU
+      
+    def set_data(self, d):
+       if d != datetime(1, 1, 1): self.__data = d
        else: raise ValueError("Data inválida")
+
+    def set_pontos(self, p):
+       if p >= 0: self.__pontos = p
+       else: raise ValueError("Pontuação inválida")
+
+    def get_id(self): return self.__id
+    def get_id_usuario(self): return self.__id_usuario
+    def get_data(self): return self.__data
+    def get_pontos(self): return self.__pontos
 
     def to_json(self):
        dic = {}

@@ -35,18 +35,12 @@ class Usuario:
         if cs == "": raise ValueError("Confirmação de senha vazia!")
         else: self.__confsenha = cs       
 
-    def get_id(self): 
-       return self.__id
-    def get_nome(self): 
-       return self.__nome
-    def get_telefone(self): 
-       return self.__telefone
-    def get_email(self): 
-       return self.__email
-    def get_senha(self): 
-       return self.__senha
-    def get_confsenha(self):
-       return self.__confsenha
+    def get_id(self): return self.__id
+    def get_nome(self): return self.__nome
+    def get_telefone(self): return self.__telefone
+    def get_email(self): return self.__email
+    def get_senha(self): return self.__senha
+    def get_confsenha(self): return self.__confsenha
 
 
     def to_json(self):

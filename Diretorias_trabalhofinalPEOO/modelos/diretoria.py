@@ -9,13 +9,32 @@ class Diretoria:
         self.__finalidade = f
         self.__email = e
 
+        self.set_id(id)
+        self.set_nome(n)
+        self.set_finalidade(f)
+        self.set_email(e)
+
     def set_id(self, id):
       self.__id = id 
+    def set_nome (self, n):
+      if n == "": raise ValueError("Nome vazio!")
+      else: self.__nome = n
+    def set_finalidade(self, f):
+        if f == "": raise ValueError("Finalidade vazia!")
+        else: self.__finalidade = f
+    def set_email(self, e):
+        if e == "": raise ValueError("Email vazio!")
+        else: self.__email = e
 
+    def get_id(self): return self.__id
+    def get_id(self): return self.__nome
+    def get_id(self): return self.__finalidade
+    def get_id(self): return self.__email
+    
     def to_json(self):
        dic = {}
        dic["id"] = self.__id
-       dic["nome"] = self.__id_nome
+       dic["nome"] = self.__nome
        dic["finalidade"] = self.__finalidade
        dic["email"] = self.__email
        return dic
