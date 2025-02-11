@@ -10,7 +10,16 @@ class Diretoria:
         self.__email = e
 
     def set_id(self, id):
-      self.__id = id    
+      self.__id = id 
+
+    def to_json(self):
+       dic = {}
+       dic["id"] = self.__id
+       dic["nome"] = self.__id_nome
+       dic["finalidade"] = self.__finalidade
+       dic["email"] = self.__email
+       return dic
+       
     def __str__(self):
         return f"id - {self.__id}, nome - {self.__nome}, finalidade - {self.__finalidade}, email - {self.__email}"
     
@@ -18,7 +27,7 @@ class Diretorias (CRUD):
   @classmethod
   def salvar(cls):
     with open("Diretorias.json", mode="w") as arquivo:   # w - write
-      json.dump(cls.objetos, arquivo, default = vars)
+      json.dump(cls.objetos, arquivo, default = Diretoria.to_json)
 
   @classmethod
   def abrir(cls):

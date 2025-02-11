@@ -24,6 +24,13 @@ class Pergunta:
     def get_id(self): return self.__id
     def get_id_curso(self): return self.__id_curso
     def get_conteudo(self): return self.__conteudo
+  
+    def to_json(self):
+       dic = {}
+       dic["id"] = self.__id
+       dic["id_curso"] = self.__id_curso
+       dic["id_conteudo"] = self.__id_conteudo
+       return dic
     
     def __str__(self):
         return f"id - {self.__id}, curso - {self.__id_curso}, pergunta - {self.__conteudo}"

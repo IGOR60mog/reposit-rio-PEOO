@@ -33,7 +33,7 @@ class Usuario:
         else: self.__senha = s
     def set_confsenha(self, cs):
         if cs == "": raise ValueError("Confirmação de senha vazia!")
-        else: self.__senha = cs       
+        else: self.__confsenha = cs       
 
     def get_id(self): 
        return self.__id

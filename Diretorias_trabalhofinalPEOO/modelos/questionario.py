@@ -11,7 +11,15 @@ class Questionario:
 
     def set_id(self, id):
       self.__id = id
-          
+
+    def to_json(self):
+       dic = {}
+       dic["id"] = self.__id
+       dic["id_pergunta"] = self.__id_pergunta
+       dic["id_questionario"] = self.__id_questionario
+       dic["resposta"] = self.__resposta
+       return dic
+    
     def __str__(self):
         return f"id - {self.__id}, usuario - {self.__id_usuario} data - {self.__data} - pontos {self.__pontos}"
     
