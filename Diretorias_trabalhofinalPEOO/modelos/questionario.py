@@ -19,7 +19,8 @@ class Questionario:
       self.__id = id
 
     def set_id_usuario(self, idU):
-       self.__id_usuario = idU
+       if idU < 0: raise ValueError("Usuário inválido")
+       else: self.__id_usuario = idU
       
     def set_data(self, d):
        if d != datetime(1, 1, 1): self.__data = d

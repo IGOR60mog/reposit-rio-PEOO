@@ -48,7 +48,7 @@ from modelos.curso import *
 # q = Questionario(1, 1, datetime(2025, 2, 11), 300)
 # Questionarios.atualizar(q)
 
-# q = Questionario(1, "", "", 0)
+# q = Questionario(1, 0, "", 0)
 # Questionarios.excluir(q)
 
 # for x in Questionarios.listar():
@@ -74,17 +74,17 @@ from modelos.curso import *
 
 #DIRETORIA
 
-d = Diretoria(0, "DIATINF", "Tecnologia da informação", "diatinf@email.com")
-Diretorias.inserir(d)
+# d = Diretoria(0, "DIATINF", "Tecnologia da informação", "diatinf@email.com")
+# Diretorias.inserir(d)
 
-d = Diretoria(1, "DIATINF", "Gestão e tecnologia da informação", "diatinf@email.com")
-Diretorias.atualizar(d)
+# d = Diretoria(1, "DIATINF", "Gestão e tecnologia da informação", "diatinf@email.com")
+# Diretorias.atualizar(d)
 
-d = Diretoria(1, "#", "#", "#")
-Diretorias.excluir(d)
+# d = Diretoria(1, "#", "#", "#")
+# Diretorias.excluir(d)
 
-for x in Diretorias.listar():
-    print(x)
+# for x in Diretorias.listar():
+#     print(x)
 
 
 
