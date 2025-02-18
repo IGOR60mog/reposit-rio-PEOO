@@ -1,5 +1,5 @@
 import streamlit as st
-from View import View
+from view import View
 import time
 
 class LoginUI:
@@ -14,4 +14,4 @@ class LoginUI:
                 st.session_state["usuario_nome"] = c["nome"]
                 st.rerun()               
             else:
-                st.write("Email e senha inválidos!")
+                st.error("Email e senha inválidos!")

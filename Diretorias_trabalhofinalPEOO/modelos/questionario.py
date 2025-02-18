@@ -9,6 +9,7 @@ class Questionario:
         self.__id_usuario = idU
         self.__data = d
         self.__pontos = p
+        self.__idC = 0
 
         self.set_id(id)
         self.set_id_usuario(idU)
