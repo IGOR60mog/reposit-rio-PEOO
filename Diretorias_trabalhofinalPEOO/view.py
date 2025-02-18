@@ -15,7 +15,13 @@ class View:
         for c in View.cliente_listar():
             if c.email == "admin": return
         View.cliente_inserir("admin", "admin", "1234", "1234", 0)
-        
+
+    def usuario_autenticar(email, senha):
+        for c in View.cliente_listar():
+            if c.email == email and c.senha == senha:
+                return {"id" : c.id, "nome" : c.nome }
+        return None
+
     def curso_inserir(idD, n, d, du):
         x = Curso(0, idD, n, d, du)
         Cursos.inserir(x)
@@ -77,6 +83,19 @@ class View:
     def usuario_listar():
         return Usuarios.listar()
 
+    def perfil_cursos_id(id):
+        return Cursos.listar_id(id) 
+    def perfil_diretorias_id(id):
+        return Diretorias.listar_id(id) 
+    def perfil_perguntas_id(id):
+        return Perguntas.listar_id(id) 
+    def perfil_questionarios_id(id):
+        return Questionarios.listar_id(id) 
+    def perfil_respostas_id(id):
+        return Respostas.listar_id(id) 
+    def perfil_usuarios_id(id):
+        return Usuarios.listar_id(id) 
+    
     def curso_excluir(id):
         x = Curso(id, 0, "#", "#", 0)
         Cursos.excluir(x)
@@ -100,3 +119,5 @@ class View:
     def usuario_excluir(id):
         x = Usuario(id, "#", "#", "#", "#", "#")
         Usuarios.excluir(x)
+
+    #def calculo_pontos()
